@@ -52,11 +52,10 @@ export default function Topbar() {
                 size="sm"
                 className={
                   isActive
-                    ? "h-7 px-3 text-xs bg-accent text-white hover:bg-accent/90"
+                    ? "h-7 px-3 text-xs bg-accent text-accent-foreground hover:bg-accent/90"
                     : "h-7 px-3 text-xs"
                 }
-                aria-pressed={isActive}
-                aria-label={`Switch to ${mode} mode`}
+                aria-label={`${mode} mode`}
               >
                 {mode}
               </Button>
@@ -70,7 +69,7 @@ export default function Topbar() {
         {/* Right side cluster */}
         <div className="flex items-center gap-3">
           {/* Sync status */}
-          <div className="flex items-center gap-1.5 text-xs text-emerald-500">
+          <div className="flex items-center gap-1.5 text-xs text-success">
             <RefreshCw className="size-3.5" aria-hidden="true" />
             <span>Synced</span>
           </div>
@@ -81,7 +80,7 @@ export default function Topbar() {
             aria-label="AI status: online"
           >
             <span
-              className="size-2 rounded-full bg-emerald-500"
+              className="size-2 rounded-full bg-success"
               aria-hidden="true"
             />
             <span>AI ready</span>
