@@ -1,15 +1,28 @@
-export default function DashboardContent() {
+import InboxPanel from "@/components/dashboard/InboxPanel"
+import TodoPanel from "@/components/dashboard/TodoPanel"
+import ContextPanel from "@/components/dashboard/ContextPanel"
+
+export default function DashboardContent(): React.ReactElement {
   return (
     <div className="flex flex-1 overflow-hidden h-full">
-      <main className="flex-1 overflow-y-auto p-4">
-        <p className="text-sm text-muted-foreground">Main</p>
-      </main>
-      <aside
-        className="w-[280px] shrink-0 border-l border-border overflow-y-auto p-4"
-        aria-label="Right panel"
+      <section
+        className="basis-[45%] shrink-0 overflow-y-auto border-r border-border"
+        aria-label="Inbox"
       >
-        <p className="text-sm text-muted-foreground">Right panel</p>
-      </aside>
+        <InboxPanel />
+      </section>
+      <section
+        className="basis-[30%] shrink-0 overflow-y-auto border-r border-border"
+        aria-label="Todo"
+      >
+        <TodoPanel />
+      </section>
+      <section
+        className="basis-[25%] min-w-0 overflow-y-auto"
+        aria-label="AI Context"
+      >
+        <ContextPanel />
+      </section>
     </div>
-  );
+  )
 }
