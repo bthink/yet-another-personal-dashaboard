@@ -1,6 +1,6 @@
 # PersonalDashboard - Plan działania
 
-Ostatnia aktualizacja: 2026-05-09
+Ostatnia aktualizacja: 2026-05-11
 
 ## Produkt
 
@@ -75,27 +75,27 @@ Project shape: `{ id, name, status, lastDecision, nextStep, todos, notes, lastSe
 
 ## Fazy
 
-### Faza 1 - App shell [ ]
+### Faza 1 - App shell [x]
 
-Status: nierozpoczęta
+Status: ukończona 2026-05-11
 
 | Task | Status |
 |---|---|
-| 1.1 pnpm create next-app + deps (Tailwind, shadcn, Geist) | [ ] |
-| 1.2 Layout root - sidebar + topbar + main + right panel | [ ] |
-| 1.3 Sidebar: vault info, nawigacja 8 sekcji, active projects, capture button | [ ] |
-| 1.4 Topbar: search/command bar, mode selector (Search/Ask/Capture/Research), sync + AI status | [ ] |
-| 1.5 Dashboard 3-col z mock data | [ ] |
-| 1.6 Inbox panel - lista itemów, typy, statusy, zaznaczanie | [ ] |
-| 1.7 TODO panel - sekcje, checkboxy, wikilinki, daty | [ ] |
-| 1.8 Right context panel - AI suggestion, confidence bar, routing preview | [ ] |
-| 1.9 Command palette ⌘K - UI + keyboard nav | [ ] |
-| 1.10 Theming - light/dark, CSS variables | [ ] |
-| 1.11 Responsywność ≤1024px (collapsible sidebar, right panel jako drawer) | [ ] |
+| 1.1 pnpm create next-app + deps (Tailwind, shadcn, Geist) | [x] |
+| 1.2 Layout root - sidebar + topbar + main + right panel | [x] |
+| 1.3 Sidebar: vault info, nawigacja 8 sekcji, active projects, capture button | [x] |
+| 1.4 Topbar: search/command bar, mode selector (Search/Ask/Capture/Research), sync + AI status | [x] |
+| 1.5 Dashboard 3-col z mock data | [x] |
+| 1.6 Inbox panel - lista itemów, typy, statusy, zaznaczanie | [x] |
+| 1.7 TODO panel - sekcje, checkboxy, wikilinki, daty | [x] |
+| 1.8 Right context panel - AI suggestion, confidence bar, routing preview | [x] |
+| 1.9 Command palette ⌘K - UI + keyboard nav | [x] |
+| 1.10 Theming - light/dark, CSS variables | [x] |
+| 1.11 Responsywność ≤1024px (collapsible sidebar, right panel jako drawer) | [x] |
 
 ### Faza 2 - Vault access [ ]
 
-Status: nierozpoczęta (po Fazie 1)
+Status: nierozpoczęta - NASTĘPNA
 
 | Task | Status |
 |---|---|
