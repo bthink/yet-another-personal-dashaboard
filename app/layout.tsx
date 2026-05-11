@@ -1,0 +1,31 @@
+import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import ThemeProvider from "@/components/layout/ThemeProvider";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Personal Dashboard",
+  description: "Yet another personal dashboard",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
