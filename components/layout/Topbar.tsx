@@ -9,6 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 
 const MODES = ["Search", "Ask", "Capture", "Research"] as const;
 type Mode = (typeof MODES)[number];
@@ -87,6 +88,9 @@ export default function Topbar() {
           </div>
 
           <Separator orientation="vertical" className="h-5" />
+
+          {/* Theme toggle */}
+          <ThemeToggle />
 
           {/* Settings button */}
           <Tooltip>

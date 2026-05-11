@@ -40,6 +40,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-success: var(--success);
+  --color-snoozed: var(--snoozed);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -74,6 +75,7 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --success: oklch(0.62 0.17 155);
+  --snoozed: oklch(0.82 0.18 85);
   --radius: 6px;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -116,6 +118,7 @@
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --success: oklch(0.72 0.18 155);
+  --snoozed: oklch(0.72 0.16 85);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }

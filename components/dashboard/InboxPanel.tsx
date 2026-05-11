@@ -36,7 +36,7 @@ function StatusDot({ status }: { status: InboxItemStatus }): React.ReactElement 
     status === "new"
       ? "bg-accent"
       : status === "snoozed"
-        ? "bg-amber-400"
+        ? "bg-snoozed"
         : "bg-muted-foreground/40"
 
   return <span className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${colorClass}`} />
