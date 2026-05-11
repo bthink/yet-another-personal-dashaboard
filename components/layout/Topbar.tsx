@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, RefreshCw, Settings } from "lucide-react";
+import { Search, RefreshCw, Settings, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/layout/ThemeToggle";
+import { useMobileNav } from "@/components/layout/MobileNavProvider";
 
 const MODES = ["Search", "Ask", "Capture", "Research"] as const;
 type Mode = (typeof MODES)[number];
@@ -17,12 +18,25 @@ type Mode = (typeof MODES)[number];
 const ACTIVE_MODE: Mode = "Search";
 
 export default function Topbar() {
+  const { toggleSidebar } = useMobileNav();
+
   return (
     <TooltipProvider>
       <header
         className="h-12 w-full shrink-0 border-b border-border flex items-center gap-4 px-4"
         aria-label="Top navigation bar"
       >
+        {/* Hamburger - mobile only */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-8 w-8 lg:hidden shrink-0"
+          aria-label="Open navigation menu"
+          onClick={toggleSidebar}
+        >
+          <Menu className="size-4" aria-hidden="true" />
+        </Button>
+
         {/* Search / Command bar */}
         <div className="relative flex items-center w-80 shrink-0">
           <Search
