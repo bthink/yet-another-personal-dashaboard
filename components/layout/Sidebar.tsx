@@ -1,4 +1,4 @@
-import React from "react";
+import type { ComponentType } from "react";
 import {
   LayoutDashboard,
   Inbox,
@@ -17,7 +17,7 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface NavItem {
-  icon: React.ComponentType<{ size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
+  icon: ComponentType<{ size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
   label: string;
   active?: boolean;
   badge?: string;
@@ -66,14 +66,14 @@ export default function Sidebar() {
                   className={[
                     "w-full justify-start h-8 px-2 text-sm font-normal",
                     active
-                      ? "bg-[#3b6cd9]/10 text-[#3b6cd9] hover:bg-[#3b6cd9]/15 hover:text-[#3b6cd9]"
+                      ? "bg-accent/10 text-accent hover:bg-accent/15 hover:text-accent"
                       : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                   aria-current={active ? "page" : undefined}
                 >
-                  <Icon size={16} className="mr-2 shrink-0" aria-hidden="true" />
+                  <Icon size={16} className="mr-2 shrink-0" aria-hidden={true} />
                   <span className="flex-1 text-left">{label}</span>
                   {badge && (
                     <Badge
@@ -101,7 +101,7 @@ export default function Sidebar() {
                     className="w-full text-left flex items-center gap-2 px-1 py-1 text-xs rounded-sm hover:bg-muted truncate transition-colors"
                   >
                     <span
-                      className="w-1.5 h-1.5 rounded-full bg-[#3b6cd9] shrink-0"
+                      className="w-1.5 h-1.5 rounded-full bg-accent shrink-0"
                       aria-hidden="true"
                     />
                     <span className="truncate">{project}</span>
@@ -117,7 +117,7 @@ export default function Sidebar() {
       <div className="px-3 py-3 shrink-0">
         <Separator className="mb-3" />
         <Button
-          className="w-full bg-[#3b6cd9] hover:bg-[#3b6cd9]/90 text-white h-8 text-sm"
+          className="w-full bg-accent hover:bg-accent/90 text-white h-8 text-sm"
           aria-label="Quick capture (⌘K)"
         >
           <Plus size={16} className="mr-2 shrink-0" aria-hidden="true" />
