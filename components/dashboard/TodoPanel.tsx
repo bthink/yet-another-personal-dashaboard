@@ -59,7 +59,7 @@ function TodoItemRow({ item, done, onToggle }: TodoItemRowProps): React.ReactEle
       >
         {done ? (
           <span className="w-4 h-4 rounded-full bg-accent flex items-center justify-center">
-            <Check className="text-white" style={{ width: 10, height: 10 }} strokeWidth={3} />
+            <Check className="text-white w-2.5 h-2.5" strokeWidth={3} />
           </span>
         ) : (
           <span className="w-4 h-4 rounded-full border border-muted-foreground/40" />
@@ -88,7 +88,7 @@ function TodoItemRow({ item, done, onToggle }: TodoItemRowProps): React.ReactEle
               isOverdue(item.dueDate) ? "text-destructive" : "text-muted-foreground"
             }`}
           >
-            <Calendar style={{ width: 10, height: 10 }} />
+            <Calendar className="w-2.5 h-2.5" />
             <span className="text-xs">{formatDueDate(item.dueDate)}</span>
           </div>
         )}
@@ -115,10 +115,9 @@ function TodoItemRow({ item, done, onToggle }: TodoItemRowProps): React.ReactEle
 }
 
 export default function TodoPanel(): React.ReactElement {
-  const initialDone = new Set<string>(
-    mockTodoSections.flatMap((s) => s.items.filter((i) => i.done).map((i) => i.id))
+  const [doneTodos, setDoneTodos] = useState<Set<string>>(
+    () => new Set(mockTodoSections.flatMap((s) => s.items.filter((i) => i.done).map((i) => i.id)))
   )
-  const [doneTodos, setDoneTodos] = useState<Set<string>>(initialDone)
 
   const totalItems = mockTodoSections.reduce((sum, s) => sum + s.items.length, 0)
 
