@@ -126,15 +126,56 @@ Główne pozycje: Search/RAG, Knowledge composer, Projects cockpit, Research que
 
 ## Decyzje architektoniczne
 
-- **Server Components** domyślnie. `'use client'` tylko dla inbox selection, command palette, theming.
+- **Server Components** domyślnie. `'use client'` tylko dla inbox selection, command palette, theming, mobile nav.
 - **Brak useEffect dla danych** - SWR lub React Query dla vault data polling.
-- **Mock data** w `lib/mock-data.ts` - podmieniane 1:1 w Fazie 2.
+- **Mock data** w `lib/mock-data.ts` - podmieniane 1:1 w Fazie 2 (typy muszą być zgodne).
 - Każdy zapis do vaultu przez API route (nigdy z client side), zawsze z backupem.
 - `.env.local` w `.gitignore` od dnia 0.
 - Nawigacja: 8 sekcji (Dashboard, Inbox, TODO, Knowledge, Projects, Research, Calendar, Settings).
+- Vault write: atomic - najpierw backup, potem zapis, rollback przy błędzie.
+
+## Kontekst Fazy 2 (vault access)
+
+### Struktura vaultu (Bf-vault)
+
+```
+97_Inbox/          ← pliki do klasyfikacji (InboxPanel czyta stąd)
+00_System/
+  TODO.md          ← parser TodoPanel (format: ## sekcja + - [ ] zadanie)
+  Do obejrzenia i przeczytania.md  ← watchlist
+01_Projects/       ← aktywne projekty
+03_Knowledge/      ← docelowy folder routowania dla AI
+04_Ideas/          ← pomysły
+96_ClaudeMemory/   ← historia sesji AI
+```
+
+### API routes do zbudowania (Faza 2)
+
+- `GET /api/vault/health` - sprawdza VAULT_PATH, zwraca `{ ok, vaultName, inboxCount }`
+- `GET /api/vault/inbox` - fs.readdirSync `97_Inbox/`, zwraca `InboxItem[]` zgodnie z typami z `lib/mock-data.ts`
+- `GET /api/vault/todo` - parser `00_System/TODO.md`, zwraca `TodoSection[]` zgodnie z typami
+- `GET /api/vault/projects` - lista folderów z `01_Projects/`, zwraca `ProjectItem[]`
+
+### Format TODO.md (do parsowania)
+
+```markdown
+## Today
+- [ ] Zadanie 1 #tag [[Project link]]
+- [x] Zadanie zrobione (due:: 2026-05-10)
+
+## This week
+- [ ] Inne zadanie
+```
+
+### Podmiana mock data na realne (Faza 2.5)
+
+Komponenty `InboxPanel`, `TodoPanel` i `ContextPanel` aktualnie importują z `lib/mock-data.ts`.
+W Fazie 2 zamieniane 1:1: komponenty dostaną dane przez props (Server Component fetch) lub SWR hook.
+Typy w `lib/mock-data.ts` muszą zostać - tylko wartości zamieniane na realne.
 
 ## Otwarte pytania
 
 - Tauri vs Electron po MVP (po Fazie 3).
 - pgvector vs lokalny indeks tekstowy (ocena po wdrożeniu Fazy 2 search).
 - Czy Übersicht widget operuje przez localhost API czy bezpośrednio na plikach?
+- Format parsowania TODO.md - sprawdzić realny vault przed implementacją parsera.

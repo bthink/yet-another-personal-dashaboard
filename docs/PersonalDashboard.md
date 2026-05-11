@@ -1,12 +1,17 @@
 ---
 tags: [projekt, dashboard, ai, rag]
 created: 2026-04-24
-status: planning
+updated: 2026-05-11
+status: in-progress (Faza 1 ukończona)
 ---
 
 # Personal Dashboard
 
-Local-first personal workspace dla Obsidian vaultu - jeden interfejs do szybkiej obslugi inboxa, TODO, projektow, knowledge search i notatek wspieranych przez LLM.
+Local-first personal workspace dla Obsidian vaultu (Bf-vault) - jeden interfejs do szybkiej obslugi inboxa, TODO, projektow, knowledge search i notatek wspieranych przez LLM.
+
+**Repo:** https://github.com/bthink/yet-another-personal-dashaboard
+**Stack aktualny:** Next.js 16 App Router, TypeScript strict, Tailwind v4, shadcn/ui (New York), Geist + Geist Mono, pnpm
+**Dev:** `pnpm dev` na localhost:3000, redirect `/` → `/dashboard`
 
 ## Cel
 
@@ -16,7 +21,7 @@ Glowny przeplyw:
 
 `mam mysl / link / pytanie / zadanie` -> `system znajduje kontekst` -> `uzytkownik wybiera akcje` -> `vault zostaje zaktualizowany`
 
-Dashboard ma byc codziennym UI do pracy z vaultem. Codex/LLM jest silnikiem pod spodem, nie glownym interfejsem.
+Dashboard ma byc codziennym UI do pracy z vaultem. LLM jest silnikiem pod spodem, nie glownym interfejsem.
 
 ## Założenia
 
@@ -40,27 +45,54 @@ Dashboard ma byc codziennym UI do pracy z vaultem. Codex/LLM jest silnikiem pod 
 - Bezposrednie multi-provider promptowanie jako osobny panel.
 - Integracja z notebooklm-py (wrapper na undocumented Google API - niestabilny, wrócimy gdy MVP gotowy)
 
-## Tech Stack
+## Tech Stack (aktualny)
 
 | Warstwa | Narzędzie |
 |---|---|
-| UI | React / Next.js style UI + Tailwind + shadcn/ui |
-| Docelowa apka | Tauri albo Electron, do decyzji po MVP |
-| Local backend | Node.js albo Tauri commands |
-| Vault access | Bezposredni odczyt i zapis plikow Markdown w Obsidian vaultcie |
-| Search | Lokalny indeks tekstowy na start |
-| RAG / embeddingi | Pozniej pgvector lub lokalne embeddingi, jesli prosty search nie wystarczy |
-| LLM layer | Vercel AI SDK albo bezposrednie API Anthropic/OpenAI |
-| Ubersicht | Lekki widget statusowy + launcher |
+| UI | Next.js 16 App Router + TypeScript strict |
+| Styling | Tailwind v4 + shadcn/ui (New York style) |
+| Fonts | Geist (text) + Geist Mono (wikilinks/paths/tags) |
+| LLM | Anthropic SDK bezpośrednio (claude-sonnet-4-6) |
+| Search MVP | fuse.js lub flexsearch (lokalny indeks tekstowy) |
+| Desktop (po MVP) | Tauri (decyzja po Fazie 3) |
+| Vault access | Node.js fs API przez Next.js API routes (serwer → pliki lokalne) |
 
-## Plan prac (MVP-first)
+Config przez `.env.local`:
+- `VAULT_PATH` - absolutna ścieżka do Bf-vault (np. `/Users/bartoszfink/Library/Mobile Documents/iCloud~md~obsidian/Documents/Bf-vault`)
+- `ANTHROPIC_API_KEY`
 
-### Etap 1 - Local app shell
-- [ ] Lokalna aplikacja webowa albo prototyp desktop UI
-- [ ] Layout dashboardu: sidebar, command bar, inbox, TODO, prawy panel preview
-- [ ] Konfiguracja sciezki do vaultu
+## Struktura vaultu (Bf-vault, PARA)
 
-### Etap 2 - Vault access
+```
+Bf-vault/
+├── 00_System/
+│   ├── TODO.md          ← główny plik zadań (parsowany w Fazie 2)
+│   └── Do obejrzenia i przeczytania.md  ← watchlist
+├── 01_Projects/         ← aktywne projekty
+├── 02_Areas/            ← obszary odpowiedzialności
+├── 03_Knowledge/        ← notatki wiedzy (docelowy folder dla AI routing)
+│   └── IT/              ← subfolder dla tech notatek
+├── 04_Ideas/            ← pomysły
+├── 96_ClaudeMemory/     ← historia sesji z AI
+├── 97_Inbox/            ← inbox do klasyfikacji (Faza 2 czyta stąd)
+└── 98_Archive/          ← archiwum
+```
+
+## Status etapów
+
+### Etap 1 - App shell [x] UKOŃCZONY (2026-05-11)
+- [x] Next.js 16 + Tailwind v4 + shadcn + Geist
+- [x] Layout: sidebar 240px + topbar 48px + 3-col main + right panel 280px
+- [x] Sidebar: vault info, nav 8 sekcji, active projects, capture button
+- [x] Topbar: search bar, mode selector, sync/AI status, theme toggle
+- [x] InboxPanel: lista z typami, statusami, filtrami, selekcją (mock data)
+- [x] TodoPanel: sekcje, checkboxy, wikilinki, daty (mock data)
+- [x] ContextPanel: AI suggestion, confidence bar, action buttons (mock data)
+- [x] Command palette ⌘K z keyboard nav
+- [x] Light/dark theming (localStorage)
+- [x] Responsywność ≤1024px (sidebar Sheet, right panel Drawer)
+
+### Etap 2 - Vault access [ ] NASTĘPNY
 - [ ] Czytanie `.md` z vaultu
 - [ ] Lista plikow z `97_Inbox/`
 - [ ] Parser `00_System/TODO.md`
