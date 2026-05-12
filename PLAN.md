@@ -93,22 +93,22 @@ Status: ukończona 2026-05-11
 | 1.10 Theming - light/dark, CSS variables | [x] |
 | 1.11 Responsywność ≤1024px (collapsible sidebar, right panel jako drawer) | [x] |
 
-### Faza 2 - Vault access [ ]
+### Faza 2 - Vault access [x]
 
-Status: nierozpoczęta - NASTĘPNA
+Status: ukończona 2026-05-12
 
 | Task | Status |
 |---|---|
-| 2.1 VAULT_PATH z .env.local, API route health check | [ ] |
-| 2.2 GET /api/vault/inbox - fs listing 97_Inbox/ | [ ] |
-| 2.3 GET /api/vault/todo - parser 00_System/TODO.md | [ ] |
-| 2.4 GET /api/vault/projects - lista 01_Projects/ | [ ] |
-| 2.5 Podmiana mocków na realne dane | [ ] |
-| 2.6 obsidian:// deep links | [ ] |
+| 2.1 VAULT_PATH z .env.local, API route health check | [x] |
+| 2.2 GET /api/vault/inbox - fs listing 97_Inbox/ | [x] |
+| 2.3 GET /api/vault/todo - parser 00_System/TODO.md | [x] |
+| 2.4 GET /api/vault/projects - lista 01_Projects/ | [x] |
+| 2.5 Podmiana mocków na realne dane | [x] |
+| 2.6 obsidian:// deep links | [x] |
 
 ### Faza 3 - Inbox routing (core value) [ ]
 
-Status: nierozpoczęta (po Fazie 2)
+Status: nierozpoczęta - NASTĘPNA
 
 | Task | Status |
 |---|---|
