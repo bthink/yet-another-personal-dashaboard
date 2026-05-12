@@ -66,10 +66,10 @@ export default function CommandPalette({ onClose }: Props) {
       )
     : ALL_COMMANDS;
 
-  // Reset highlight when filtered list changes
-  useEffect(() => {
-    setHighlightedIndex(0);
-  }, [query]);
+  function handleQueryChange(value: string): void {
+    setQuery(value)
+    setHighlightedIndex(0)
+  }
 
   // Focus input on mount
   useEffect(() => {
@@ -144,7 +144,7 @@ export default function CommandPalette({ onClose }: Props) {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => handleQueryChange(e.target.value)}
             placeholder="Type a command or search..."
             className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
             aria-label="Command search"

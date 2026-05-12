@@ -1,10 +1,14 @@
 'use client'
 
 import { useState } from "react"
-import { FileText, Link2, CheckSquare, Lightbulb, File } from "lucide-react"
+import useSWR from "swr"
+import { FileText, Link2, CheckSquare, Lightbulb, File, ExternalLink } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
-import { mockInboxItems, type InboxItem, type InboxItemType, type InboxItemStatus } from "@/lib/mock-data"
+import type { InboxItem, InboxItemType, InboxItemStatus } from "@/lib/mock-data"
+import { buildObsidianUrl } from "@/lib/obsidian"
+
+const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
 type FilterTab = "all" | InboxItemStatus
 
@@ -45,47 +49,64 @@ function StatusDot({ status }: { status: InboxItemStatus }): React.ReactElement 
 interface InboxItemRowProps {
   item: InboxItem
   selected: boolean
+  vaultName: string | undefined
   onSelect: (id: string) => void
 }
 
-function InboxItemRow({ item, selected, onSelect }: InboxItemRowProps): React.ReactElement {
+function InboxItemRow({ item, selected, vaultName, onSelect }: InboxItemRowProps): React.ReactElement {
   const Icon = TYPE_ICONS[item.type]
 
   return (
-    <button
-      type="button"
-      onClick={() => onSelect(item.id)}
+    <div
       className={[
-        "w-full text-left px-3 py-2 border-b border-border last:border-b-0",
-        "hover:bg-muted/50 transition-colors",
-        selected ? "border-l-2 border-l-accent bg-accent/5 pl-[10px]" : "border-l-2 border-l-transparent",
+        "border-b border-border last:border-b-0",
+        selected ? "border-l-2 border-l-accent bg-accent/5" : "border-l-2 border-l-transparent",
       ].join(" ")}
     >
-      <div className="flex items-center gap-2 min-w-0">
-        <Icon size={14} className="flex-shrink-0 text-muted-foreground" aria-hidden="true" />
-        <StatusDot status={item.status} />
-        <span className="flex-1 text-sm font-medium truncate">{item.title}</span>
-        <span className="flex-shrink-0 text-xs text-muted-foreground font-mono">
-          {formatRelativeTime(item.timestamp)}
-        </span>
-      </div>
+      <button
+        type="button"
+        onClick={() => onSelect(item.id)}
+        className="w-full text-left px-3 py-2 hover:bg-muted/50 transition-colors"
+      >
+        <div className="flex items-center gap-2 min-w-0">
+          <Icon size={14} className="flex-shrink-0 text-muted-foreground" aria-hidden="true" />
+          <StatusDot status={item.status} />
+          <span className="flex-1 text-sm font-medium truncate">{item.title}</span>
+          <span className="flex-shrink-0 text-xs text-muted-foreground font-mono">
+            {formatRelativeTime(item.timestamp)}
+          </span>
+        </div>
 
-      {(item.preview || item.source) && (
-        <div className="flex items-center gap-2 mt-0.5 pl-6">
-          {item.preview && (
-            <span className="flex-1 text-xs text-muted-foreground truncate">{item.preview}</span>
-          )}
-          {item.source && (
-            <Badge
-              variant="secondary"
-              className="flex-shrink-0 text-[10px] px-1 py-0 h-auto font-mono leading-4"
-            >
-              {item.source}
-            </Badge>
-          )}
+        {(item.preview || item.source) && (
+          <div className="flex items-center gap-2 mt-0.5 pl-6">
+            {item.preview && (
+              <span className="flex-1 text-xs text-muted-foreground truncate">{item.preview}</span>
+            )}
+            {item.source && (
+              <Badge
+                variant="secondary"
+                className="flex-shrink-0 text-[10px] px-1 py-0 h-auto font-mono leading-4"
+              >
+                {item.source}
+              </Badge>
+            )}
+          </div>
+        )}
+      </button>
+
+      {selected && vaultName && (
+        <div className="px-3 pb-2 pl-[34px]">
+          <a
+            href={buildObsidianUrl(vaultName, `97_Inbox/${item.id}`)}
+            className="inline-flex items-center gap-1 text-[10px] text-accent hover:underline font-mono"
+            aria-label={`Open ${item.title} in Obsidian`}
+          >
+            <ExternalLink size={10} aria-hidden="true" />
+            Open in Obsidian
+          </a>
         </div>
       )}
-    </button>
+    </div>
   )
 }
 
@@ -96,23 +117,30 @@ const FILTER_TABS: { key: FilterTab; label: string }[] = [
   { key: "snoozed", label: "Snoozed" },
 ]
 
-function countByStatus(status: InboxItemStatus): number {
-  return mockInboxItems.filter((item) => item.status === status).length
-}
-
-function getTabCount(key: FilterTab): number {
-  if (key === "all") return mockInboxItems.length
-  return countByStatus(key)
-}
-
 export default function InboxPanel(): React.ReactElement {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [activeFilter, setActiveFilter] = useState<FilterTab>("all")
 
+  const { data: inboxItems = [], isLoading } = useSWR<InboxItem[]>(
+    "/api/vault/inbox",
+    fetcher,
+    { refreshInterval: 30_000 },
+  )
+
+  const { data: healthData } = useSWR<{ ok: boolean; vaultName: string }>(
+    "/api/vault/health",
+    fetcher,
+  )
+
   const filteredItems =
     activeFilter === "all"
-      ? mockInboxItems
-      : mockInboxItems.filter((item) => item.status === activeFilter)
+      ? inboxItems
+      : inboxItems.filter((item) => item.status === activeFilter)
+
+  function getTabCount(key: FilterTab): number {
+    if (key === "all") return inboxItems.length
+    return inboxItems.filter((item) => item.status === key).length
+  }
 
   function handleSelect(id: string): void {
     setSelectedId((prev) => (prev === id ? null : id))
@@ -125,7 +153,7 @@ export default function InboxPanel(): React.ReactElement {
         <div className="flex items-center gap-2 mb-2">
           <h2 className="text-sm font-semibold">Inbox</h2>
           <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-auto font-mono">
-            {mockInboxItems.length}
+            {isLoading ? "…" : inboxItems.length}
           </Badge>
         </div>
 
@@ -166,6 +194,7 @@ export default function InboxPanel(): React.ReactElement {
                 key={item.id}
                 item={item}
                 selected={selectedId === item.id}
+                vaultName={healthData?.vaultName}
                 onSelect={handleSelect}
               />
             ))
