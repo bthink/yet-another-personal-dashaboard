@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import useSWR from "swr";
 import { PanelRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,9 +13,37 @@ import {
 import InboxPanel from "@/components/dashboard/InboxPanel";
 import TodoPanel from "@/components/dashboard/TodoPanel";
 import ContextPanel from "@/components/dashboard/ContextPanel";
+import type { InboxItem } from "@/lib/mock-data";
+
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function DashboardContent(): React.ReactElement {
   const [isContextOpen, setIsContextOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const { data: inboxItems = [], isLoading, mutate: mutateInbox } = useSWR<InboxItem[]>(
+    "/api/vault/inbox",
+    fetcher,
+    { refreshInterval: 30_000 },
+  );
+
+  const { data: healthData } = useSWR<{ ok: boolean; vaultName: string }>(
+    "/api/vault/health",
+    fetcher,
+  );
+
+  const selectedItem = selectedId
+    ? (inboxItems.find((item) => item.id === selectedId) ?? null)
+    : null;
+
+  function handleSelect(id: string): void {
+    setSelectedId((prev) => (prev === id ? null : id));
+  }
+
+  function handleWriteSuccess(): void {
+    setSelectedId(null);
+    void mutateInbox();
+  }
 
   return (
     <div className="flex flex-1 overflow-hidden h-full relative">
@@ -23,7 +52,13 @@ export default function DashboardContent(): React.ReactElement {
         className="flex-1 overflow-y-auto border-r border-border min-w-0"
         aria-label="Inbox"
       >
-        <InboxPanel />
+        <InboxPanel
+          items={inboxItems}
+          isLoading={isLoading}
+          selectedId={selectedId}
+          vaultName={healthData?.vaultName}
+          onSelect={handleSelect}
+        />
       </section>
 
       {/* TodoPanel - hidden on <lg */}
@@ -39,7 +74,10 @@ export default function DashboardContent(): React.ReactElement {
         className="hidden lg:flex lg:flex-col basis-[25%] shrink-0 overflow-y-auto"
         aria-label="AI Context"
       >
-        <ContextPanel />
+        <ContextPanel
+          selectedItem={selectedItem}
+          onWriteSuccess={handleWriteSuccess}
+        />
       </section>
 
       {/* Floating context panel button - mobile only */}
@@ -59,7 +97,10 @@ export default function DashboardContent(): React.ReactElement {
             <DrawerTitle>AI Context</DrawerTitle>
           </DrawerHeader>
           <div className="flex-1 overflow-y-auto">
-            <ContextPanel />
+            <ContextPanel
+              selectedItem={selectedItem}
+              onWriteSuccess={handleWriteSuccess}
+            />
           </div>
         </DrawerContent>
       </Drawer>
