@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server"
-import Anthropic from "@anthropic-ai/sdk"
+import OpenAI from "openai"
 import { getVaultPath, vaultExists, readVaultFile } from "@/lib/vault"
 import type { ClassifyResult } from "@/lib/mock-data"
 
-const client = new Anthropic()
-
-// Stable system prompt — cached across all classify requests
 const CLASSIFY_SYSTEM = `You are classifying an inbox item from an Obsidian vault (PARA structure).
 
 Vault structure:
@@ -43,6 +40,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   }
 
   try {
+    const client = new OpenAI()
     const vaultPath = getVaultPath()
     if (!vaultExists(vaultPath)) {
       return NextResponse.json({ error: "Vault not found" }, { status: 404 })
@@ -55,30 +53,22 @@ export async function GET(request: Request): Promise<NextResponse> {
       return NextResponse.json({ error: "Inbox item not found" }, { status: 404 })
     }
 
-    const message = await client.messages.create({
-      model: "claude-sonnet-4-6",
+    const completion = await client.chat.completions.create({
+      model: "gpt-4.1-mini",
       max_tokens: 512,
-      system: [
-        {
-          type: "text",
-          text: CLASSIFY_SYSTEM,
-          cache_control: { type: "ephemeral" },
-        },
-      ],
+      response_format: { type: "json_object" },
       messages: [
-        {
-          role: "user",
-          content: `Filename: ${itemId}.md\n\n${content}`,
-        },
+        { role: "system", content: CLASSIFY_SYSTEM },
+        { role: "user", content: `Filename: ${itemId}.md\n\n${content}` },
       ],
     })
 
-    const textBlock = message.content.find((b) => b.type === "text")
-    if (!textBlock || textBlock.type !== "text") {
+    const text = completion.choices[0]?.message?.content
+    if (!text) {
       return NextResponse.json({ error: "No response from AI" }, { status: 500 })
     }
 
-    const result = JSON.parse(textBlock.text) as ClassifyResult
+    const result = JSON.parse(text) as ClassifyResult
     return NextResponse.json(result)
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Unknown error"
