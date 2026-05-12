@@ -1,12 +1,15 @@
 'use client'
 
 import { useState } from "react"
+import useSWR from "swr"
 import { Check, Plus, Calendar } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { mockTodoSections, type TodoItem, type TodoPriority } from "@/lib/mock-data"
+import type { TodoItem, TodoSection, TodoPriority } from "@/lib/mock-data"
+
+const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
 function getPriorityDotClass(priority: TodoPriority): string {
   if (priority === "high") return "bg-destructive"
@@ -115,11 +118,15 @@ function TodoItemRow({ item, done, onToggle }: TodoItemRowProps): React.ReactEle
 }
 
 export default function TodoPanel(): React.ReactElement {
-  const [doneTodos, setDoneTodos] = useState<Set<string>>(
-    () => new Set(mockTodoSections.flatMap((s) => s.items.filter((i) => i.done).map((i) => i.id)))
+  const { data: todoSections = [], isLoading } = useSWR<TodoSection[]>(
+    "/api/vault/todo",
+    fetcher,
+    { refreshInterval: 30_000 },
   )
 
-  const totalItems = mockTodoSections.reduce((sum, s) => sum + s.items.length, 0)
+  const [doneTodos, setDoneTodos] = useState<Set<string>>(new Set<string>())
+
+  const totalItems = todoSections.reduce((sum, s) => sum + s.items.length, 0)
 
   function toggleDone(id: string): void {
     setDoneTodos((prev) => {
@@ -140,7 +147,7 @@ export default function TodoPanel(): React.ReactElement {
         <div className="flex items-center gap-2">
           <span className="text-sm font-semibold text-accent uppercase tracking-wide">TODO</span>
           <Badge variant="secondary" className="text-xs px-1.5 py-0">
-            {totalItems}
+            {isLoading ? "…" : totalItems}
           </Badge>
         </div>
         <Button variant="ghost" size="sm" className="h-6 px-1.5 text-muted-foreground" disabled>
@@ -151,7 +158,7 @@ export default function TodoPanel(): React.ReactElement {
 
       {/* Scrollable sections */}
       <ScrollArea className="flex-1">
-        {mockTodoSections.map((section, sectionIndex) => (
+        {todoSections.map((section, sectionIndex) => (
           <div key={section.id}>
             {/* Section heading */}
             <div className="sticky top-0 z-10 bg-background px-3 py-1.5 flex items-center gap-2">
@@ -172,7 +179,7 @@ export default function TodoPanel(): React.ReactElement {
             ))}
 
             {/* Separator between sections */}
-            {sectionIndex < mockTodoSections.length - 1 && (
+            {sectionIndex < todoSections.length - 1 && (
               <Separator className="my-1" />
             )}
           </div>
