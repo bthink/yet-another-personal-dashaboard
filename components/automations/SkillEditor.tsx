@@ -40,8 +40,14 @@ export default function SkillEditor({ skill, onSave, onDelete }: SkillEditorProp
 
   async function handleDelete() {
     if (!skill) return
-    const res = await fetch(`/api/skills/${skill.name}`, { method: 'DELETE' })
-    if (res.ok) onDelete(skill.name)
+    setError(null)
+    try {
+      const res = await fetch(`/api/skills/${skill.name}`, { method: 'DELETE' })
+      if (!res.ok) throw new Error('Delete failed')
+      onDelete(skill.name)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Delete failed')
+    }
   }
 
   const inputStyle = {

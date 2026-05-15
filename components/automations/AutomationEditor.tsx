@@ -67,8 +67,8 @@ export default function AutomationEditor({
 
   async function handleDelete() {
     if (!automation) return
-    await fetch(`/api/automations/${automation.id}`, { method: 'DELETE' })
-    onDelete(automation.id)
+    const res = await fetch(`/api/automations/${automation.id}`, { method: 'DELETE' })
+    if (res.ok) onDelete(automation.id)
   }
 
   function addInput() {
@@ -156,7 +156,7 @@ export default function AutomationEditor({
           </button>
         </div>
         {inputs.map((inp, i) => (
-          <div key={i} className="grid gap-1.5 mb-1.5" style={{ gridTemplateColumns: '1fr 1fr auto auto' }}>
+          <div key={inp.key} className="grid gap-1.5 mb-1.5" style={{ gridTemplateColumns: '1fr 1fr auto auto' }}>
             <input
               value={inp.label}
               onChange={e => updateInput(i, { label: e.target.value })}
