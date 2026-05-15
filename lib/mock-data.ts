@@ -38,6 +38,8 @@ export interface AiSuggestion {
   confidence: number // 0-1
   reasoning: string
   destinationPath?: string // vault path
+  appendLine?: string
+  inboxContent?: string
 }
 
 export const mockInboxItems: InboxItem[] = [
