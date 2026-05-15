@@ -7,7 +7,7 @@ const jobs = new Map<string, cron.ScheduledTask>()
 
 export function scheduleJob(id: string, cronExpr: string): void {
   cancelJob(id)
-  const task = cron.schedule(cronExpr, () => { runAutomationCron(id) })
+  const task = cron.schedule(cronExpr, () => { void runAutomationCron(id).catch(console.error) })
   jobs.set(id, task)
 }
 
@@ -40,27 +40,36 @@ export async function runAutomationCron(id: string): Promise<void> {
   const startedAt = new Date().toISOString()
   let output = ''
 
-  await new Promise<void>((resolve) => {
+  await new Promise<void>((resolve, reject) => {
     const proc = spawn('bash', ['-c', automation.script], {
-      env: { ...process.env as Record<string, string> },
+      env: { ...process.env },
     })
     const timeout = setTimeout(() => proc.kill('SIGTERM'), 60_000)
 
     proc.stdout.on('data', (chunk: Buffer) => { output += chunk.toString() })
     proc.stderr.on('data', (chunk: Buffer) => { output += chunk.toString() })
 
+    proc.on('error', (err) => {
+      clearTimeout(timeout)
+      reject(err)
+    })
+
     proc.on('close', async (exitCode: number | null) => {
       clearTimeout(timeout)
-      await appendLog({
-        runId,
-        automationId: id,
-        startedAt,
-        finishedAt: new Date().toISOString(),
-        status: exitCode === 0 ? 'ok' : 'error',
-        inputs: {},
-        output,
-        exitCode: exitCode ?? -1,
-      })
+      try {
+        await appendLog({
+          runId,
+          automationId: id,
+          startedAt,
+          finishedAt: new Date().toISOString(),
+          status: exitCode === 0 ? 'ok' : 'error',
+          inputs: {},
+          output,
+          exitCode: exitCode ?? -1,
+        })
+      } catch (err) {
+        console.error('Failed to write run log:', err)
+      }
       resolve()
     })
   })
