@@ -22,10 +22,7 @@ export async function POST(req: NextRequest, { params }: Params): Promise<Respon
 
   const stream = new ReadableStream({
     start(controller) {
-      const env: Record<string, string> = {}
-      for (const [k, v] of Object.entries(process.env)) {
-        if (v !== undefined) env[k] = v
-      }
+      const env: NodeJS.ProcessEnv = { ...process.env }
       for (const [key, value] of Object.entries(inputs)) {
         env[`INPUT_${key.toUpperCase()}`] = value
       }
