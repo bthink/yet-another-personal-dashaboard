@@ -11,20 +11,23 @@ vi.mock('fs/promises', () => ({
 import * as fsp from 'fs/promises'
 import { listSkills, getSkill, saveSkill, deleteSkill } from './skills'
 
+type ReaddirResult = Awaited<ReturnType<typeof fsp.readdir>>
+type ReadFileResult = Awaited<ReturnType<typeof fsp.readFile>>
+
 beforeEach(() => vi.clearAllMocks())
 
 describe('listSkills', () => {
   it('returns empty array when directory is empty', async () => {
     vi.mocked(fsp.mkdir).mockResolvedValue(undefined)
-    vi.mocked(fsp.readdir).mockResolvedValue([] as never)
+    vi.mocked(fsp.readdir).mockResolvedValue([] as unknown as ReaddirResult)
     expect(await listSkills()).toEqual([])
   })
 
   it('parses skill name and description from frontmatter', async () => {
     vi.mocked(fsp.mkdir).mockResolvedValue(undefined)
-    vi.mocked(fsp.readdir).mockResolvedValue(['my-skill.md'] as never)
+    vi.mocked(fsp.readdir).mockResolvedValue(['my-skill.md'] as unknown as ReaddirResult)
     vi.mocked(fsp.readFile).mockResolvedValue(
-      '---\ndescription: A test skill\n---\n\nBody here' as never
+      '---\ndescription: A test skill\n---\n\nBody here' as unknown as ReadFileResult
     )
     const result = await listSkills()
     expect(result).toHaveLength(1)
@@ -34,8 +37,8 @@ describe('listSkills', () => {
 
   it('ignores non-.md files', async () => {
     vi.mocked(fsp.mkdir).mockResolvedValue(undefined)
-    vi.mocked(fsp.readdir).mockResolvedValue(['skill.md', 'readme.txt'] as never)
-    vi.mocked(fsp.readFile).mockResolvedValue('# content' as never)
+    vi.mocked(fsp.readdir).mockResolvedValue(['skill.md', 'readme.txt'] as unknown as ReaddirResult)
+    vi.mocked(fsp.readFile).mockResolvedValue('# content' as unknown as ReadFileResult)
     const result = await listSkills()
     expect(result).toHaveLength(1)
   })
@@ -63,9 +66,15 @@ describe('getSkill', () => {
   })
 
   it('returns parsed skill when file exists', async () => {
-    vi.mocked(fsp.readFile).mockResolvedValue('---\ndescription: Exists\n---\nContent' as never)
+    vi.mocked(fsp.readFile).mockResolvedValue('---\ndescription: Exists\n---\nContent' as unknown as ReadFileResult)
     const skill = await getSkill('exists')
     expect(skill?.name).toBe('exists')
+  })
+
+  it('rethrows non-ENOENT errors', async () => {
+    const permError = Object.assign(new Error('EACCES'), { code: 'EACCES' })
+    vi.mocked(fsp.readFile).mockRejectedValue(permError)
+    await expect(getSkill('test')).rejects.toThrow('EACCES')
   })
 })
 
@@ -74,5 +83,11 @@ describe('deleteSkill', () => {
     vi.mocked(fsp.unlink).mockResolvedValue(undefined)
     await deleteSkill('test')
     expect(fsp.unlink).toHaveBeenCalledWith(expect.stringContaining('test.md'))
+  })
+
+  it('throws when file does not exist', async () => {
+    const err = Object.assign(new Error('ENOENT'), { code: 'ENOENT' })
+    vi.mocked(fsp.unlink).mockRejectedValue(err)
+    await expect(deleteSkill('missing')).rejects.toThrow('ENOENT')
   })
 })

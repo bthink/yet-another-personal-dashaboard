@@ -30,8 +30,9 @@ export async function getSkill(name: string): Promise<Skill | null> {
     const filePath = path.join(SKILLS_DIR, `${name}.md`)
     const content = await readFile(filePath, 'utf-8')
     return parseSkill(content, filePath)
-  } catch {
-    return null
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return null
+    throw err
   }
 }
 
