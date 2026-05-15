@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import type { GraphNode } from '@/lib/graph';
 
 interface NotePreviewProps {
@@ -9,7 +10,7 @@ interface NotePreviewProps {
   onClose: () => void;
 }
 
-function renderLine(line: string): React.ReactNode {
+function renderLine(line: string): ReactNode {
   const parts = line.split(/(\[\[[^\]\n]+\]\])/g);
   return parts.map((part, i) => {
     const match = part.match(/^\[\[([^\]\n]+)\]\]$/);
@@ -103,6 +104,7 @@ export default function NotePreview({ node, content, loading, onClose }: NotePre
           </p>
         </div>
         <button
+          type="button"
           onClick={onClose}
           aria-label="Close preview"
           style={{
