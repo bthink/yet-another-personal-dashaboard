@@ -119,7 +119,7 @@ const FILTER_TABS: { key: FilterTab; label: string }[] = [
 
 interface InboxPanelProps {
   selectedId?: string | null
-  onSelect?: (id: string) => void
+  onSelect?: (item: InboxItem | null) => void
 }
 
 export default function InboxPanel({ selectedId: controlledSelectedId, onSelect: controlledOnSelect }: InboxPanelProps = {}): React.ReactElement {
@@ -127,14 +127,6 @@ export default function InboxPanel({ selectedId: controlledSelectedId, onSelect:
   const [activeFilter, setActiveFilter] = useState<FilterTab>("all")
 
   const selectedId = controlledSelectedId !== undefined ? controlledSelectedId : internalSelectedId
-
-  function handleSelect(id: string): void {
-    if (controlledOnSelect) {
-      controlledOnSelect(id)
-    } else {
-      setInternalSelectedId((prev) => (prev === id ? null : id))
-    }
-  }
 
   const { data: inboxItems = [], isLoading } = useSWR<InboxItem[]>(
     "/api/vault/inbox",
@@ -146,6 +138,15 @@ export default function InboxPanel({ selectedId: controlledSelectedId, onSelect:
     "/api/vault/health",
     fetcher,
   )
+
+  function handleSelect(id: string): void {
+    if (controlledOnSelect) {
+      const next = id === selectedId ? null : (inboxItems.find(i => i.id === id) ?? null)
+      controlledOnSelect(next)
+    } else {
+      setInternalSelectedId((prev) => (prev === id ? null : id))
+    }
+  }
 
   const filteredItems =
     activeFilter === "all"

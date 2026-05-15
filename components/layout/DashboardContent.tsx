@@ -1,83 +1,128 @@
-"use client";
+"use client"
 
-import { useState, useCallback } from "react";
-import { PanelRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useCallback } from "react"
+import { mutate } from "swr"
+import { PanelRight } from "lucide-react"
+import { toast, Toaster } from "sonner"
+import { Button } from "@/components/ui/button"
 import {
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-} from "@/components/ui/drawer";
-import InboxPanel from "@/components/dashboard/InboxPanel";
-import TodoPanel from "@/components/dashboard/TodoPanel";
-import ContextPanel from "@/components/dashboard/ContextPanel";
-import type { InboxItem, AiSuggestion } from "@/lib/mock-data";
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+} from "@/components/ui/drawer"
+import InboxPanel from "@/components/dashboard/InboxPanel"
+import TodoPanel from "@/components/dashboard/TodoPanel"
+import ContextPanel from "@/components/dashboard/ContextPanel"
+import type { InboxItem, AiSuggestion } from "@/lib/mock-data"
 
 export default function DashboardContent(): React.ReactElement {
-  const [isContextOpen, setIsContextOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [inboxItems, setInboxItems] = useState<InboxItem[]>([]);
-  const [suggestion, setSuggestion] = useState<AiSuggestion | null>(null);
-  const [classifyStatus, setClassifyStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [isContextOpen, setIsContextOpen] = useState(false)
+  const [selectedItem, setSelectedItem] = useState<InboxItem | null>(null)
+  const [suggestion, setSuggestion] = useState<AiSuggestion | null>(null)
+  const [classifyStatus, setClassifyStatus] = useState<
+    "idle" | "loading" | "error"
+  >("idle")
 
-  const selectedItem = inboxItems.find((item) => item.id === selectedId) ?? null;
-
-  const handleSelect = useCallback((id: string) => {
-    setSelectedId((prev) => {
-      if (prev === id) return null;
-      // Clear suggestion when selecting a different item
-      setSuggestion(null);
-      setClassifyStatus("idle");
-      return id;
-    });
-  }, []);
+  function handleSelect(item: InboxItem | null): void {
+    setSelectedItem(item)
+    setSuggestion(null)
+    setClassifyStatus("idle")
+  }
 
   const handleClassify = useCallback(async () => {
-    if (!selectedItem) return;
-    setClassifyStatus("loading");
+    if (!selectedItem) return
+    setClassifyStatus("loading")
     try {
-      const res = await fetch(`/api/inbox/classify?file=${encodeURIComponent(selectedItem.id)}`);
-      if (!res.ok) throw new Error("classify failed");
-      const data = await res.json() as AiSuggestion;
-      setSuggestion(data);
-      setClassifyStatus("idle");
-    } catch {
-      setClassifyStatus("error");
+      const res = await fetch("/api/inbox/classify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ itemId: selectedItem.id }),
+      })
+      if (!res.ok) throw new Error(await res.text())
+      const data = (await res.json()) as AiSuggestion
+      setSuggestion(data)
+      setClassifyStatus("idle")
+    } catch (err) {
+      console.error("classify failed", err)
+      setClassifyStatus("error")
     }
-  }, [selectedItem]);
+  }, [selectedItem])
 
-  const handleAction = useCallback((action: AiSuggestion["suggestedAction"]) => {
-    // Remove item from list after action
-    setInboxItems((prev) => prev.filter((item) => item.id !== selectedId));
-    setSelectedId(null);
-    setSuggestion(null);
-    setClassifyStatus("idle");
-  }, [selectedId]);
+  const handleAction = useCallback(
+    async (action: AiSuggestion["suggestedAction"]) => {
+      if (!selectedItem || !suggestion) return
 
-  const contextPanel = (
-    <ContextPanel
-      selectedItem={selectedItem}
-      suggestion={suggestion}
-      classifyStatus={classifyStatus}
-      onClassify={handleClassify}
-      onAction={handleAction}
-    />
-  );
+      try {
+        const res = await fetch("/api/vault/write", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action, itemId: selectedItem.id, suggestion }),
+        })
+        if (!res.ok) throw new Error(await res.text())
+        const { undoToken } = (await res.json()) as {
+          ok: true
+          undoToken: string
+        }
+
+        const itemTitle = selectedItem.title
+        setSelectedItem(null)
+        setSuggestion(null)
+        setClassifyStatus("idle")
+
+        await mutate(
+          "/api/vault/inbox",
+          (current: InboxItem[] | undefined) =>
+            current?.filter((i) => i.id !== selectedItem.id),
+          { revalidate: true },
+        )
+
+        toast.success("Done", {
+          description: itemTitle,
+          action: {
+            label: "Undo",
+            onClick: async () => {
+              await fetch("/api/vault/undo", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ undoToken }),
+              })
+              await mutate("/api/vault/inbox")
+              toast.success("Undone")
+            },
+          },
+          duration: 10_000,
+        })
+      } catch (err) {
+        console.error("action failed", err)
+        toast.error("Action failed")
+      }
+    },
+    [selectedItem, suggestion],
+  )
+
+  const contextPanelProps = {
+    selectedItem,
+    suggestion,
+    classifyStatus,
+    onClassify: handleClassify,
+    onAction: handleAction,
+  }
 
   return (
     <div className="flex flex-1 overflow-hidden h-full relative">
-      {/* InboxPanel - always visible, takes full width on mobile */}
+      <Toaster position="bottom-right" />
+
       <section
         className="flex-1 overflow-y-auto border-r border-border min-w-0"
         aria-label="Inbox"
       >
-        <InboxPanel selectedId={selectedId} onSelect={handleSelect} />
+        <InboxPanel
+          selectedId={selectedItem?.id ?? null}
+          onSelect={handleSelect}
+        />
       </section>
 
-      {/* TodoPanel - hidden on <lg */}
       <section
         className="hidden lg:flex lg:flex-col basis-[30%] shrink-0 overflow-y-auto border-r border-border"
         aria-label="Todo"
@@ -85,15 +130,13 @@ export default function DashboardContent(): React.ReactElement {
         <TodoPanel />
       </section>
 
-      {/* ContextPanel - hidden on <lg, always visible on lg+ */}
       <section
         className="hidden lg:flex lg:flex-col basis-[25%] shrink-0 overflow-y-auto"
         aria-label="AI Context"
       >
-        {contextPanel}
+        <ContextPanel {...contextPanelProps} />
       </section>
 
-      {/* Floating context panel button - mobile only */}
       <Button
         className="lg:hidden fixed bottom-4 right-4 z-40 h-10 w-10 rounded-full shadow-lg"
         size="icon"
@@ -103,17 +146,20 @@ export default function DashboardContent(): React.ReactElement {
         <PanelRight className="size-4" aria-hidden="true" />
       </Button>
 
-      {/* Context panel Drawer - mobile only */}
-      <Drawer open={isContextOpen} onOpenChange={setIsContextOpen} direction="right">
+      <Drawer
+        open={isContextOpen}
+        onOpenChange={setIsContextOpen}
+        direction="right"
+      >
         <DrawerContent className="h-full max-w-sm w-full overflow-y-auto">
           <DrawerHeader>
             <DrawerTitle>AI Context</DrawerTitle>
           </DrawerHeader>
           <div className="flex-1 overflow-y-auto">
-            {contextPanel}
+            <ContextPanel {...contextPanelProps} />
           </div>
         </DrawerContent>
       </Drawer>
     </div>
-  );
+  )
 }

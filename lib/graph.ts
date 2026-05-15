@@ -2,7 +2,7 @@ export type GraphNode = {
   id: string
   label: string
   folder: string
-  linkCount: number
+  linkCount: number // outgoing wikilinks to existing vault files
 }
 
 export type GraphLink = {
@@ -16,7 +16,7 @@ export type GraphData = {
 }
 
 export function extractWikilinks(markdown: string): string[] {
-  const matches = [...markdown.matchAll(/\[\[([^\]]+)\]\]/g)]
+  const matches = [...markdown.matchAll(/\[\[([^\]\n]+)\]\]/g)]
   return matches.map(m => {
     const raw = m[1]
     return raw.includes('|') ? raw.split('|')[0].trim() : raw.trim()

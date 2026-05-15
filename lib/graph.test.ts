@@ -80,4 +80,10 @@ describe('buildGraphData', () => {
     const { links } = buildGraphData(files)
     expect(links).toHaveLength(1)
   })
+
+  it('excludes self-links', () => {
+    const files = [{ path: 'a.md', content: '[[a]]' }]
+    const { links } = buildGraphData(files)
+    expect(links).toHaveLength(0)
+  })
 })

@@ -1,0 +1,1716 @@
+[     232ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[     244ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   16368ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   16399ms] [LOG] [Fast Refresh] done in 49ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   16409ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   16517ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16526ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16534ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16542ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16550ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16556ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16564ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16573ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[   16590ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[   16612ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[   16616ms] Error: ./components/dashboard/InboxPanel.tsx:121:2
+Expected ident
+  119 |
+  120 | interface InboxPanelProps {
+> 121 | <<<<<<< Updated upstream
+      |  ^
+  122 |   selectedId: string | null
+  123 |   onSelect: (item: InboxItem | null) => void
+  124 | =======
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/InboxPanel.tsx [Client Component Browser]
+    ./components/layout/DashboardContent.tsx [Client Component Browser]
+    ./components/layout/DashboardContent.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/InboxPanel.tsx [Client Component SSR]
+    ./components/layout/DashboardContent.tsx [Client Component SSR]
+    ./components/layout/DashboardContent.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./components/dashboard/InboxPanel.tsx:121:2)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[   16617ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   16619ms] [ERROR] ./components/dashboard/InboxPanel.tsx:121:2
+Expected ident
+  119 |
+  120 | interface InboxPanelProps {
+> 121 | <<<<<<< Updated upstream
+      |  ^
+  122 |   selectedId: string | null
+  123 |   onSelect: (item: InboxItem | null) => void
+  124 | =======
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/InboxPanel.tsx [Client Component Browser]
+    ./components/layout/DashboardContent.tsx [Client Component Browser]
+    ./components/layout/DashboardContent.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/InboxPanel.tsx [Client Component SSR]
+    ./components/layout/DashboardContent.tsx [Client Component SSR]
+    ./components/layout/DashboardContent.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   16619ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   16654ms] [ERROR] ./components/dashboard/InboxPanel.tsx:121:2
+Expected ident
+  119 |
+  120 | interface InboxPanelProps {
+> 121 | <<<<<<< Updated upstream
+      |  ^
+  122 |   selectedId: string | null
+  123 |   onSelect: (item: InboxItem | null) => void
+  124 | =======
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/InboxPanel.tsx [Client Component Browser]
+    ./components/layout/DashboardContent.tsx [Client Component Browser]
+    ./components/layout/DashboardContent.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/InboxPanel.tsx [Client Component SSR]
+    ./components/layout/DashboardContent.tsx [Client Component SSR]
+    ./components/layout/DashboardContent.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   16654ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   16730ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   24260ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   24291ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   24353ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[   24365ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[   24371ms] Error: ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./components/layout/DashboardContent.tsx:7:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[   24370ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   24373ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   24404ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   36707ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   36772ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   38205ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[   38297ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   38537ms] [LOG] [Fast Refresh] done in 92ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   38545ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   38644ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   38647ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   38647ms] [LOG] [Fast Refresh] done in 98ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   40384ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   40409ms] [LOG] [Fast Refresh] done in 127ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[   40778ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   40792ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   80386ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   80597ms] [LOG] [Fast Refresh] done in 190ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   80765ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   81088ms] [LOG] [Fast Refresh] done in 425ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   98284ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   98307ms] [LOG] [Fast Refresh] done in 38ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   98314ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   98447ms] [LOG] [Fast Refresh] done in 7ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   98668ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[   98958ms] [LOG] [Fast Refresh] done in 391ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  110030ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  110064ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:3318
+[  110064ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:3318
+[  110075ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  110095ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  110096ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:3318
+[  110096ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:3318
+[  110108ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  110115ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  110123ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  110130ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  110142ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  110155ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  110167ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  110214ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  110245ms] Error: ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./lib/automations/scheduler.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  110244ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  110264ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  110265ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  110279ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  110279ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  110351ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  120181ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  120181ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  120245ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  120440ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  120440ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  120474ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  128751ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  128751ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  128794ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  132637ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  132638ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  132686ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  134157ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  134157ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  134224ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  135610ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  135610ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  135648ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  136594ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  136594ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  136640ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  137843ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  137843ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  137910ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  138782ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138782ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138834ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  138864ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138864ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138943ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138943ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138958ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  138976ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  138984ms] Error: ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./lib/automations/scheduler.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  138982ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  138983ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138983ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138985ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  138985ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  139017ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  139017ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  139085ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  142509ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  142539ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  142539ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  142589ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  142606ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  142612ms] Error: ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./lib/automations/scheduler.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  142613ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  142615ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  142616ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  142647ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  142647ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  142715ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  176165ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  176165ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  176211ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  206539ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  206539ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  206584ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  213420ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  213464ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213464ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213488ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  213502ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  213509ms] Error: ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./lib/automations/scheduler.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  213510ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  213512ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213512ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213512ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213512ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213544ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213544ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  213613ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  214449ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  214449ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  214491ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  223311ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  223362ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  223362ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  223376ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  223388ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  223394ms] Error: ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./lib/automations/scheduler.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  223393ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  223396ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  223396ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  223428ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  223428ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  228421ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  228466ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  228466ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  228484ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  228496ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  228501ms] Error: ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./lib/automations/scheduler.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  228501ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  228505ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  228505ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  228534ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  228534ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257363ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  257395ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257396ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257489ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257489ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257563ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257563ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257618ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  257634ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  257646ms] Error: ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./lib/automations/scheduler.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  257642ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  257645ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257645ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257646ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257646ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257677ms] [ERROR] ./lib/automations/scheduler.ts:1:1
+Module not found: Can't resolve 'node-cron'
+> 1 | import cron from 'node-cron'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { spawn } from 'child_process'
+  3 | import { v4 as uuidv4 } from 'uuid'
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257677ms] [ERROR] ./lib/automations/scheduler.ts:3:1
+Module not found: Can't resolve 'uuid'
+  1 | import cron from 'node-cron'
+  2 | import { spawn } from 'child_process'
+> 3 | import { v4 as uuidv4 } from 'uuid'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { listAutomations, getAutomation, appendLog } from '../automations'
+  5 |
+  6 | const jobs = new Map<string, cron.ScheduledTask>()
+
+Import trace:
+  Instrumentation:
+    ./lib/automations/scheduler.ts
+    ./instrumentation.ts
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  257747ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  262931ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  262964ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  262967ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  262984ms] [LOG] [Fast Refresh] done in 54ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  263120ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  263139ms] [LOG] [Fast Refresh] done in 120ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  264659ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  264668ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  267385ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  267477ms] [LOG] [Fast Refresh] done in 51ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  267579ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  267589ms] [LOG] [Fast Refresh] done in 110ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  267691ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  267832ms] [LOG] [Fast Refresh] done in 242ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477

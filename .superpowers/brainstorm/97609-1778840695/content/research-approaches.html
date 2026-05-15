@@ -1,0 +1,81 @@
+<h2>Research tab — 3 podejścia do layoutu</h2>
+<p class="subtitle">Flow: wpisz query lub wklej URLe → AI (vault + web) → auto-zapis do 03_Knowledge/</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Minimal launcher</h3>
+      <p>Tylko input + submit. Żadnego outputu w UI — toast "Zapisano do vaultu", notatka pojawia się w Obsidianie. Ekstremalnie prosty, zero rozpraszania.</p>
+      <div style="margin-top:10px; background: var(--bg, #f6f6f4); border: 1px solid var(--border, #e6e5e1); border-radius:6px; padding:12px; font-size:12px;">
+        <div style="background:white; border:1px solid #e6e5e1; border-radius:4px; padding:8px 10px; color:#5b5b56; margin-bottom:8px;">wpisz temat lub wklej URLe...</div>
+        <div style="display:flex; gap:6px;">
+          <div style="background: oklch(0.55 0.13 250); color:white; border-radius:4px; padding:4px 12px; font-size:11px; cursor:pointer;">Zbadaj</div>
+          <div style="border:1px solid #e6e5e1; border-radius:4px; padding:4px 10px; font-size:11px; color:#8a8a83;">+ URL</div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:8px;">
+        <div class="pros"><h4>Pro</h4><ul><li>Minimalizm</li><li>Szybko działa</li></ul></div>
+        <div class="cons"><h4>Con</h4><ul><li>Nie widzisz co AI wygenerowała</li><li>Blind trust</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Input + streaming preview <span style="font-size:10px; background: oklch(0.94 0.03 250); color: oklch(0.55 0.13 250); padding:2px 6px; border-radius:3px; margin-left:4px;">REKOMENDACJA</span></h3>
+      <p>Auto-zapis, ale notatka strumieniuje się na prawym panelu gdy AI generuje. Widzisz co trafia do vaultu, możesz otworzyć w Obsidianie po zakończeniu.</p>
+      <div style="margin-top:10px; display:flex; gap:8px; background: var(--bg, #f6f6f4); border: 1px solid var(--border, #e6e5e1); border-radius:6px; padding:10px; font-size:11px;">
+        <div style="flex:1; border-right:1px solid #e6e5e1; padding-right:8px;">
+          <div style="color:#8a8a83; margin-bottom:4px; font-size:10px; text-transform:uppercase; letter-spacing:.05em;">Input</div>
+          <div style="background:white; border:1px solid #e6e5e1; border-radius:4px; padding:6px 8px; color:#5b5b56; margin-bottom:6px; font-size:10px;">różnice między skills a agentami</div>
+          <div style="background: oklch(0.55 0.13 250); color:white; border-radius:4px; padding:3px 10px; font-size:10px; text-align:center; cursor:pointer;">Zbadaj →</div>
+        </div>
+        <div style="flex:1.4;">
+          <div style="color:#8a8a83; margin-bottom:4px; font-size:10px; text-transform:uppercase; letter-spacing:.05em;">Output <span style="color: oklch(0.58 0.12 150);">● streaming</span></div>
+          <div style="background:white; border:1px solid #e6e5e1; border-radius:4px; padding:6px 8px; font-size:10px; line-height:1.5; color:#1a1a18;">
+            <span style="color:#8a8a83;"># Skills vs Agents</span><br/>
+            Skills to wyizolowane...<span style="border-right:1px solid #1a1a18; animation: none;">|</span>
+          </div>
+          <div style="font-size:9px; color:#8a8a83; margin-top:4px;">→ 03_Knowledge/IT/Skills-vs-Agents.md</div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:8px;">
+        <div class="pros"><h4>Pro</h4><ul><li>Widzisz wynik</li><li>Auto-zapis bez klikania</li><li>Link do Obsidiana po skończeniu</li></ul></div>
+        <div class="cons"><h4>Con</h4><ul><li>Nieco więcej UI do zbudowania</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Research workspace z historią</h3>
+      <p>Lewa kolumna: lista poprzednich badań (tytuł + data + link do notatki). Środek: input. Prawy panel: wynik aktualnego. Pełne narzędzie badawcze.</p>
+      <div style="margin-top:10px; display:flex; gap:6px; background: var(--bg, #f6f6f4); border: 1px solid var(--border, #e6e5e1); border-radius:6px; padding:10px; font-size:10px;">
+        <div style="width:90px; border-right:1px solid #e6e5e1; padding-right:6px;">
+          <div style="color:#8a8a83; margin-bottom:4px; font-size:9px; text-transform:uppercase;">Historia</div>
+          <div style="padding:3px 0; border-bottom:1px solid #f0f0ee; color:#5b5b56;">Skills vs Agents</div>
+          <div style="padding:3px 0; border-bottom:1px solid #f0f0ee; color:#5b5b56;">React Server Comp.</div>
+          <div style="padding:3px 0; color:#5b5b56;">Tailwind v4</div>
+        </div>
+        <div style="flex:1; padding:0 6px; border-right:1px solid #e6e5e1;">
+          <div style="color:#8a8a83; margin-bottom:4px; font-size:9px; text-transform:uppercase;">Nowe badanie</div>
+          <div style="background:white; border:1px solid #e6e5e1; border-radius:3px; padding:4px 6px; color:#8a8a83; margin-bottom:4px;">temat lub URL...</div>
+          <div style="background: oklch(0.55 0.13 250); color:white; border-radius:3px; padding:2px 8px; font-size:9px; text-align:center;">Zbadaj</div>
+        </div>
+        <div style="flex:1.2;">
+          <div style="color:#8a8a83; margin-bottom:4px; font-size:9px; text-transform:uppercase;">Wynik</div>
+          <div style="background:white; border:1px solid #e6e5e1; border-radius:3px; padding:4px 6px; font-size:9px; color:#5b5b56; line-height:1.4;"># Skills vs Agents<br/>Skills to wyizolowane...</div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:8px;">
+        <div class="pros"><h4>Pro</h4><ul><li>Historia badań</li><li>Pełne narzędzie</li></ul></div>
+        <div class="cons"><h4>Con</h4><ul><li>Historia = duplikat vaultu</li><li>Więcej złożoności</li><li>Sprzeczne z fire-and-forget</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>
