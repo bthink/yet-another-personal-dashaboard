@@ -1,3 +1,5 @@
+"use client";
+
 import type { ComponentType } from "react";
 import {
   LayoutDashboard,
@@ -10,30 +12,35 @@ import {
   Calendar,
   Settings,
   Plus,
+  Network,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useMobileNav } from "@/components/layout/MobileNavProvider";
 
 interface NavItem {
   icon: ComponentType<{ size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
   label: string;
-  active?: boolean;
+  href: string;
   badge?: string;
 }
 
 const navItems: NavItem[] = [
-  { icon: LayoutDashboard, label: "Dashboard", active: true },
-  { icon: Inbox, label: "Inbox", badge: "12" },
-  { icon: CheckSquare, label: "TODO" },
-  { icon: BookOpen, label: "Knowledge" },
-  { icon: FolderKanban, label: "Projects" },
-  { icon: FlaskConical, label: "Research" },
-  { icon: Zap, label: "Automations" },
-  { icon: Calendar, label: "Calendar" },
-  { icon: Settings, label: "Settings" },
+  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
+  { icon: Inbox, label: "Inbox", href: "/dashboard/inbox", badge: "12" },
+  { icon: CheckSquare, label: "TODO", href: "/dashboard/todo" },
+  { icon: BookOpen, label: "Knowledge", href: "/dashboard/knowledge" },
+  { icon: FolderKanban, label: "Projects", href: "/dashboard/projects" },
+  { icon: FlaskConical, label: "Research", href: "/dashboard/research" },
+  { icon: Network, label: "Network", href: "/dashboard/graph" },
+  { icon: Zap, label: "Automations", href: "/dashboard/automations" },
+  { icon: Calendar, label: "Calendar", href: "/dashboard/calendar" },
+  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
 ];
 
 const activeProjects = [
@@ -43,6 +50,9 @@ const activeProjects = [
 ] as const;
 
 export default function Sidebar() {
+  const pathname = usePathname();
+  const { closeSidebar } = useMobileNav();
+
   return (
     <aside
       className="w-60 shrink-0 h-full border-r border-border flex flex-col"
@@ -60,7 +70,12 @@ export default function Sidebar() {
         <div className="px-2 py-2">
           <nav aria-label="Main navigation" className="flex flex-col gap-0.5">
             {navItems.map((item) => {
-              const { icon: Icon, label, active, badge } = item;
+              const { icon: Icon, label, href, badge } = item;
+              const active =
+                href === "/dashboard"
+                  ? pathname === href
+                  : pathname === href || pathname.startsWith(`${href}/`);
+
               return (
                 <Button
                   key={label}
@@ -74,17 +89,20 @@ export default function Sidebar() {
                     .filter(Boolean)
                     .join(" ")}
                   aria-current={active ? "page" : undefined}
+                  asChild
                 >
-                  <Icon size={16} className="mr-2 shrink-0" aria-hidden={true} />
-                  <span className="flex-1 text-left">{label}</span>
-                  {badge && (
-                    <Badge
-                      variant="secondary"
-                      className="ml-auto h-4 px-1.5 text-[10px] leading-none"
-                    >
-                      {badge}
-                    </Badge>
-                  )}
+                  <Link href={href} onClick={closeSidebar}>
+                    <Icon size={16} className="mr-2 shrink-0" aria-hidden={true} />
+                    <span className="flex-1 text-left">{label}</span>
+                    {badge && (
+                      <Badge
+                        variant="secondary"
+                        className="ml-auto h-4 px-1.5 text-[10px] leading-none"
+                      >
+                        {badge}
+                      </Badge>
+                    )}
+                  </Link>
                 </Button>
               );
             })}
