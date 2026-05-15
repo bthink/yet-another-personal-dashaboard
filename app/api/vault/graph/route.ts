@@ -12,6 +12,8 @@ async function collectFiles(
   const results: { path: string; content: string }[] = []
 
   for (const entry of entries) {
+    if (entry.name.startsWith(".")) continue
+
     const full = join(dir, entry.name)
     const rel = base ? `${base}/${entry.name}` : entry.name
 

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { readFile } from "node:fs/promises"
-import { join } from "node:path"
+import { resolve, join } from "node:path"
 import { getVaultPath, vaultExists } from "@/lib/vault"
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
@@ -12,15 +12,20 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const path = request.nextUrl.searchParams.get("path")
 
-    if (!path || path.includes("..") || path.startsWith("/")) {
+    if (!path) {
       return NextResponse.json({ error: "Invalid path" }, { status: 400 })
     }
 
-    const fullPath = join(vaultPath, path)
+    const fullPath = resolve(join(vaultPath, path))
+    const resolvedVault = resolve(vaultPath)
+
+    if (!fullPath.startsWith(resolvedVault + "/") && fullPath !== resolvedVault) {
+      return NextResponse.json({ error: "Invalid path" }, { status: 400 })
+    }
+
     const content = await readFile(fullPath, "utf-8")
     return NextResponse.json({ content })
-  } catch (err) {
-    const message = err instanceof Error ? err.message : "Unknown error"
-    return NextResponse.json({ error: message }, { status: 500 })
+  } catch {
+    return NextResponse.json({ error: "Failed to read note" }, { status: 500 })
   }
 }
