@@ -32,9 +32,33 @@ export async function POST(req: NextRequest, { params }: Params): Promise<Respon
 
       const proc = spawn('bash', ['-c', automation.script], { env })
       const timeout = setTimeout(() => proc.kill('SIGTERM'), 60_000)
+      let closed = false
 
       const send = (data: object) =>
         controller.enqueue(enc.encode(`data: ${JSON.stringify(data)}\n\n`))
+
+      const finish = async (exitCode: number) => {
+        if (closed) return
+        closed = true
+        clearTimeout(timeout)
+        const log: RunLog = {
+          runId,
+          automationId: id,
+          startedAt,
+          finishedAt: new Date().toISOString(),
+          status: exitCode === 0 ? 'ok' : 'error',
+          inputs,
+          output,
+          exitCode,
+        }
+        try {
+          await appendLog(log)
+        } catch (err) {
+          console.error('Failed to write run log:', err)
+        }
+        send({ type: 'done', exitCode })
+        controller.close()
+      }
 
       proc.stdout.on('data', (chunk: Buffer) => {
         const text = chunk.toString()
@@ -49,31 +73,12 @@ export async function POST(req: NextRequest, { params }: Params): Promise<Respon
       })
 
       proc.on('error', (err) => {
-        clearTimeout(timeout)
         send({ type: 'stderr', text: err.message })
-        send({ type: 'done', exitCode: -1 })
-        controller.close()
+        void finish(-1)
       })
 
-      proc.on('close', async (exitCode: number | null) => {
-        clearTimeout(timeout)
-        const log: RunLog = {
-          runId,
-          automationId: id,
-          startedAt,
-          finishedAt: new Date().toISOString(),
-          status: exitCode === 0 ? 'ok' : 'error',
-          inputs,
-          output,
-          exitCode: exitCode ?? -1,
-        }
-        try {
-          await appendLog(log)
-        } catch (err) {
-          console.error('Failed to write run log:', err)
-        }
-        send({ type: 'done', exitCode: exitCode ?? -1 })
-        controller.close()
+      proc.on('close', (exitCode: number | null) => {
+        void finish(exitCode ?? -1)
       })
     },
   })
