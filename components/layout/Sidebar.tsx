@@ -6,6 +6,7 @@ import {
   BookOpen,
   FolderKanban,
   FlaskConical,
+  Zap,
   Calendar,
   Settings,
   Plus,
@@ -30,6 +31,7 @@ const navItems: NavItem[] = [
   { icon: BookOpen, label: "Knowledge" },
   { icon: FolderKanban, label: "Projects" },
   { icon: FlaskConical, label: "Research" },
+  { icon: Zap, label: "Automations" },
   { icon: Calendar, label: "Calendar" },
   { icon: Settings, label: "Settings" },
 ];
