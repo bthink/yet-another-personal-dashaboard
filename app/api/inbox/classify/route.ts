@@ -1,98 +1,77 @@
-// app/api/inbox/classify/route.ts
-import { NextRequest, NextResponse } from "next/server"
-import Anthropic from "@anthropic-ai/sdk"
-import { getVaultPath, readVaultFile } from "@/lib/vault"
-import type { AiSuggestion } from "@/lib/mock-data"
+import { NextResponse } from "next/server"
+import OpenAI from "openai"
+import { getVaultPath, vaultExists, readVaultFile } from "@/lib/vault"
+import type { ClassifyResult } from "@/lib/mock-data"
 
-const client = new Anthropic()
+const CLASSIFY_SYSTEM = `You are classifying an inbox item from an Obsidian vault (PARA structure).
 
-const SYSTEM_PROMPT = `You are an inbox classifier for a personal knowledge management system (Obsidian vault with PARA structure).
+Vault structure:
+- 97_Inbox/ — items to route (current location)
+- 00_System/TODO.md — checkbox todo list
+- 00_System/Do obejrzenia i przeczytania.md — watchlist (articles, links, videos to read/watch)
+- 01_Projects/ — active projects
+- 03_Knowledge/ — knowledge notes and topic MOCs
+- 04_Ideas/ — ideas and future plans
+- 96_ClaudeMemory/ — AI session memory
 
-Classify the inbox item into exactly one action:
-- add-to-todo: the item is an actionable task for the user
-- create-note: knowledge, article notes, or reference worth a standalone note in 03_Knowledge/
-- move-to-ideas: creative idea or future concept for 04_Ideas/
-- watchlist: link, video, book, or article to consume later
-- keep: unclear purpose or needs more thought — keep in inbox
-- delete: low value, spam, duplicate, or already handled
-
-Vault structure: 01_Projects/ (active projects), 03_Knowledge/ (reference and learning), 04_Ideas/ (ideas and concepts).
-
-Return ONLY valid JSON, no markdown, no explanation:
-{"suggestedAction":"...","destinationPath":"...or null","confidence":0.85,"reasoning":"1-2 sentences."}`
-
-type ClassifyResponse = {
-  suggestedAction: AiSuggestion["suggestedAction"]
-  destinationPath: string | null
-  confidence: number
-  reasoning: string
+Return ONLY valid JSON with this exact structure (no markdown, no explanation outside JSON):
+{
+  "suggestedAction": "add-to-todo" | "create-note" | "move-to-ideas" | "watchlist" | "keep" | "delete",
+  "confidence": 0.0-1.0,
+  "reasoning": "1-2 sentence explanation",
+  "destinationPath": "vault-relative path without leading slash (required for create-note, e.g. 03_Knowledge/IT/topic-name)",
+  "todoText": "task text without checkbox prefix (required for add-to-todo)"
 }
 
-function buildAppendLine(
-  action: AiSuggestion["suggestedAction"],
-  itemId: string,
-  content: string,
-): string | undefined {
-  const titleLine = content.split("\n").find((l) => l.startsWith("# "))
-  const title = titleLine
-    ? titleLine.slice(2).trim()
-    : itemId.replace(/[-_]/g, " ")
+Action guidelines:
+- "add-to-todo": clearly actionable task → add to TODO.md
+- "create-note": reference material, meeting notes, learnings, links worth archiving → 03_Knowledge/ or 01_Projects/
+- "move-to-ideas": creative idea, future plan, brainstorm → 04_Ideas/
+- "watchlist": link or article/video to read/watch later
+- "keep": needs more context, waiting for something, unclear routing
+- "delete": spam, duplicate, reminder already handled, no longer relevant`
 
-  if (action === "add-to-todo") return `- [ ] ${title}`
-  if (action === "watchlist") return `- [[97_Inbox/${itemId}|${title}]]`
-  return undefined
-}
+export async function GET(request: Request): Promise<NextResponse> {
+  const { searchParams } = new URL(request.url)
+  const itemId = searchParams.get("itemId")
 
-export async function POST(req: NextRequest): Promise<NextResponse> {
+  if (!itemId) {
+    return NextResponse.json({ error: "itemId required" }, { status: 400 })
+  }
+
   try {
-    const body = await req.json() as { itemId: string }
-    const { itemId } = body
-
-    if (!itemId || typeof itemId !== "string") {
-      return NextResponse.json({ error: "itemId required" }, { status: 400 })
+    const client = new OpenAI()
+    const vaultPath = getVaultPath()
+    if (!vaultExists(vaultPath)) {
+      return NextResponse.json({ error: "Vault not found" }, { status: 404 })
     }
 
-    const vaultPath = getVaultPath()
-    const inboxContent = readVaultFile(vaultPath, `97_Inbox/${itemId}.md`)
+    let content: string
+    try {
+      content = readVaultFile(vaultPath, `97_Inbox/${itemId}.md`)
+    } catch {
+      return NextResponse.json({ error: "Inbox item not found" }, { status: 404 })
+    }
 
-    const message = await client.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 256,
-      system: [
-        {
-          type: "text",
-          text: SYSTEM_PROMPT,
-          cache_control: { type: "ephemeral" },
-        },
-      ],
+    const completion = await client.chat.completions.create({
+      model: "gpt-4.1-mini",
+      max_tokens: 512,
+      response_format: { type: "json_object" },
       messages: [
-        {
-          role: "user",
-          content: `Classify this inbox item:\n\nFilename: ${itemId}.md\n\n${inboxContent}`,
-        },
+        { role: "system", content: CLASSIFY_SYSTEM },
+        { role: "user", content: `Filename: ${itemId}.md\n\n${content}` },
       ],
     })
 
-    const text =
-      message.content[0].type === "text" ? message.content[0].text : "{}"
-    const parsed = JSON.parse(text) as ClassifyResponse
-
-    const suggestion: AiSuggestion = {
-      id: `suggestion-${itemId}-${Date.now()}`,
-      inboxItemId: itemId,
-      suggestedAction: parsed.suggestedAction,
-      confidence: Math.min(1, Math.max(0, parsed.confidence)),
-      reasoning: parsed.reasoning,
-      inboxContent,
-      ...(parsed.destinationPath && { destinationPath: parsed.destinationPath }),
-      ...(buildAppendLine(parsed.suggestedAction, itemId, inboxContent) && {
-        appendLine: buildAppendLine(parsed.suggestedAction, itemId, inboxContent),
-      }),
+    const text = completion.choices[0]?.message?.content
+    if (!text) {
+      return NextResponse.json({ error: "No response from AI" }, { status: 500 })
     }
 
-    return NextResponse.json(suggestion)
+    const result = JSON.parse(text) as ClassifyResult
+    return NextResponse.json(result)
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Unknown error"
-    return NextResponse.json({ error: message }, { status: 500 })
+    const msg = err instanceof Error ? err.message : "Unknown error"
+    return NextResponse.json({ error: msg }, { status: 500 })
   }
 }
