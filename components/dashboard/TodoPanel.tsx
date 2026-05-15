@@ -173,7 +173,7 @@ export default function TodoPanel(): React.ReactElement {
               <TodoItemRow
                 key={item.id}
                 item={item}
-                done={doneTodos.has(item.id)}
+                done={item.done !== doneTodos.has(item.id)}
                 onToggle={toggleDone}
               />
             ))}
