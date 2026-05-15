@@ -117,9 +117,24 @@ const FILTER_TABS: { key: FilterTab; label: string }[] = [
   { key: "snoozed", label: "Snoozed" },
 ]
 
-export default function InboxPanel(): React.ReactElement {
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+interface InboxPanelProps {
+  selectedId?: string | null
+  onSelect?: (id: string) => void
+}
+
+export default function InboxPanel({ selectedId: controlledSelectedId, onSelect: controlledOnSelect }: InboxPanelProps = {}): React.ReactElement {
+  const [internalSelectedId, setInternalSelectedId] = useState<string | null>(null)
   const [activeFilter, setActiveFilter] = useState<FilterTab>("all")
+
+  const selectedId = controlledSelectedId !== undefined ? controlledSelectedId : internalSelectedId
+
+  function handleSelect(id: string): void {
+    if (controlledOnSelect) {
+      controlledOnSelect(id)
+    } else {
+      setInternalSelectedId((prev) => (prev === id ? null : id))
+    }
+  }
 
   const { data: inboxItems = [], isLoading } = useSWR<InboxItem[]>(
     "/api/vault/inbox",
@@ -140,10 +155,6 @@ export default function InboxPanel(): React.ReactElement {
   function getTabCount(key: FilterTab): number {
     if (key === "all") return inboxItems.length
     return inboxItems.filter((item) => item.status === key).length
-  }
-
-  function handleSelect(id: string): void {
-    setSelectedId((prev) => (prev === id ? null : id))
   }
 
   return (
