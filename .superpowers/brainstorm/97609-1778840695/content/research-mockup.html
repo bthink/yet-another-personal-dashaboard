@@ -1,0 +1,106 @@
+<h2>Research tab — finalny mockup</h2>
+<p class="subtitle">Minimalistyczny launcher z feedbackiem. Kliknij żeby zatwierdzić.</p>
+
+<div class="options">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Zatwierdź ten design</h3>
+
+      <!-- Full mockup of research page -->
+      <div style="
+        background: #f6f6f4;
+        border: 1px solid #e6e5e1;
+        border-radius: 8px;
+        padding: 20px 24px;
+        margin-top: 10px;
+        font-family: 'Geist', system-ui, sans-serif;
+        font-size: 13px;
+      ">
+
+        <!-- Topbar hint -->
+        <div style="color: #8a8a83; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 16px; display: flex; align-items: center; gap: 6px;">
+          <span>Research</span>
+          <span style="color: #d8d7d2;">›</span>
+          <span style="color: #1a1a18;">Vault + Web</span>
+        </div>
+
+        <!-- Main input area -->
+        <div style="background: white; border: 1px solid #e6e5e1; border-radius: 6px; padding: 14px 16px; margin-bottom: 12px;">
+          <div style="color: #1a1a18; margin-bottom: 8px; font-size: 13px;">różnice między skills a agentami w LLM</div>
+          <!-- URL tags -->
+          <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px;">
+            <div style="background: oklch(0.94 0.03 250); color: oklch(0.55 0.13 250); font-size: 10px; font-family: 'Geist Mono', monospace; padding: 2px 7px; border-radius: 3px; display: flex; align-items: center; gap: 4px;">
+              youtube.com/watch?v=abc123
+              <span style="color: #b5b5ad; cursor: pointer;">×</span>
+            </div>
+            <div style="background: oklch(0.94 0.03 250); color: oklch(0.55 0.13 250); font-size: 10px; font-family: 'Geist Mono', monospace; padding: 2px 7px; border-radius: 3px; display: flex; align-items: center; gap: 4px;">
+              anthropic.com/research/agents
+              <span style="color: #b5b5ad; cursor: pointer;">×</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="border: 1px dashed #d8d7d2; border-radius: 4px; padding: 3px 10px; font-size: 11px; color: #8a8a83; cursor: pointer;">+ dodaj URL</div>
+          </div>
+        </div>
+
+        <!-- Action row -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+          <div style="font-size: 11px; color: #8a8a83;">
+            Cel: <span style="color: oklch(0.55 0.13 250); font-family: 'Geist Mono', monospace; font-size: 10px; background: oklch(0.94 0.03 250); padding: 1px 5px; border-radius: 3px;">03_Knowledge/IT/</span>
+            <span style="color: #b5b5ad; margin-left: 4px; cursor: pointer; font-size: 10px;">zmień</span>
+          </div>
+          <button style="
+            background: oklch(0.55 0.13 250); color: white;
+            border: none; border-radius: 6px;
+            padding: 6px 18px; font-size: 12px; cursor: pointer;
+            font-weight: 500;
+          ">Zbadaj →</button>
+        </div>
+
+        <!-- Divider -->
+        <div style="border-top: 1px solid #e6e5e1; margin-bottom: 12px;"></div>
+
+        <!-- Status: last completed -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: oklch(0.58 0.12 150); flex-shrink: 0;"></div>
+          <div style="flex: 1; font-size: 11px; color: #5b5b56;">
+            Ostatni: <span style="color: #1a1a18; font-weight: 500;">React Server Components vs Client Components</span>
+            <span style="color: #b5b5ad; margin: 0 4px;">·</span>
+            <span style="color: #8a8a83;">dziś 14:32</span>
+          </div>
+          <div style="font-size: 10px; color: oklch(0.55 0.13 250); cursor: pointer; font-family: 'Geist Mono', monospace; background: oklch(0.94 0.03 250); padding: 2px 7px; border-radius: 3px;">
+            otwórz w Obsidianie ↗
+          </div>
+        </div>
+
+        <!-- In-progress state (dimmed note) -->
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 8px; opacity: 0.5;">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: oklch(0.72 0.13 75); flex-shrink: 0; animation: pulse 1s infinite;"></div>
+          <div style="font-size: 11px; color: #5b5b56;">
+            W trakcie: <span style="color: #1a1a18; font-weight: 500;">Skills vs Agents</span>
+            <span style="color: #b5b5ad; margin: 0 4px;">·</span>
+            <span style="color: #8a8a83;">szuka w vaultcie...</span>
+          </div>
+        </div>
+
+        <!-- Toast preview -->
+        <div style="
+          margin-top: 16px;
+          background: #1a1a18; color: white;
+          border-radius: 6px; padding: 10px 14px;
+          display: flex; align-items: center; justify-content: space-between;
+          font-size: 11px;
+        ">
+          <div>
+            <span style="color: oklch(0.58 0.12 150);">✓</span>
+            <span style="margin-left: 8px;">Gotowe: <strong>Skills vs Agents</strong> → 03_Knowledge/IT/</span>
+          </div>
+          <div style="color: oklch(0.94 0.03 250); cursor: pointer;">otwórz ↗</div>
+        </div>
+        <div style="font-size: 10px; color: #b5b5ad; margin-top: 6px; text-align: right;">↑ toast pojawia się po zakończeniu, znika po 5s</div>
+
+      </div>
+    </div>
+  </div>
+</div>

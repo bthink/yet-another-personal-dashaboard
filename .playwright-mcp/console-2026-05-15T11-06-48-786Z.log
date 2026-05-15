@@ -1,0 +1,702 @@
+[     530ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[     572ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  100361ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  100970ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:3318
+[  100970ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:3318
+[  101065ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101078ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101099ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101108ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101118ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101128ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101143ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101156ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard?_rsc=baRm8Hg-bKr8antF:0
+[  101170ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  101185ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  101262ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  101302ms] Error: ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1
+
+
+    at <unknown> (Error: ./package.json:10:1)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1175:55)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  101293ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  101309ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101309ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101309ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101309ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101309ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101309ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101309ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101342ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101343ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101368ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101368ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  101443ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  104371ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104371ms] [ERROR] ./package.json:10:1
+Error parsing package.json file
+   8 |     "start": "next start",
+   9 |     "lint": "eslint",
+> 10 | <<<<<<< HEAD
+     | ^
+  11 |     "test": "vitest run"
+  12 | =======
+  13 |     "test": "vitest",
+
+package.json is not parseable: invalid JSON: key must be a string at line 10 column 1 @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104411ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  104452ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104526ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104602ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104676ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104752ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104789ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104832ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104904ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  104975ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105045ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105118ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105190ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105266ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105347ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105420ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105496ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105582ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105652ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105734ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105815ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105896ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  105977ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  106039ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  106055ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0p2h_react-dom_0vsf22y._.js:15305
+[  106062ms] Error: ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./components/layout/DashboardContent.tsx:7:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/bartoszfink/dzikieProjekty/yetAnotherPersonalDashboard/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/base-server.js:1753:26)
+[  106061ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  106066ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  106069ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  106096ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  106166ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  109956ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  110021ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  111392ms] [ERROR] ./components/layout/DashboardContent.tsx:7:1
+Module not found: Can't resolve 'sonner'
+   5 | import { mutate } from "swr"
+   6 | import { PanelRight } from "lucide-react"
+>  7 | import { toast, Toaster } from "sonner"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { Button } from "@/components/ui/button"
+   9 | import {
+  10 |   Drawer,
+
+Import trace:
+  Server Component:
+    ./components/layout/DashboardContent.tsx
+    ./app/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1945
+[  111450ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  111490ms] [LOG] [Fast Refresh] done in 33ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  111644ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  111661ms] [LOG] [Fast Refresh] done in 118ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_0jtfmts._.js:1226
+[  111907ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  111921ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  117073ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  117191ms] [LOG] [Fast Refresh] done in 40ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  117461ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  117569ms] [LOG] [Fast Refresh] done in 209ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  130557ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477
+[  130584ms] [LOG] [Fast Refresh] done in 24ms @ http://localhost:3000/_next/static/chunks/0z~i_next_dist_080cxwf._.js:2477

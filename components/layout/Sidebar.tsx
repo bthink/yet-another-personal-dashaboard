@@ -12,6 +12,7 @@ import {
   Calendar,
   Settings,
   Plus,
+  Network,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -25,20 +26,21 @@ import { useMobileNav } from "@/components/layout/MobileNavProvider";
 interface NavItem {
   icon: ComponentType<{ size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
   label: string;
-  href?: string;
+  href: string;
   badge?: string;
 }
 
 const navItems: NavItem[] = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
-  { icon: Inbox, label: "Inbox", badge: "12" },
-  { icon: CheckSquare, label: "TODO" },
-  { icon: BookOpen, label: "Knowledge" },
-  { icon: FolderKanban, label: "Projects" },
-  { icon: FlaskConical, label: "Research" },
+  { icon: Inbox, label: "Inbox", href: "/dashboard/inbox", badge: "12" },
+  { icon: CheckSquare, label: "TODO", href: "/dashboard/todo" },
+  { icon: BookOpen, label: "Knowledge", href: "/dashboard/knowledge" },
+  { icon: FolderKanban, label: "Projects", href: "/dashboard/projects" },
+  { icon: FlaskConical, label: "Research", href: "/dashboard/research" },
+  { icon: Network, label: "Network", href: "/dashboard/graph" },
   { icon: Zap, label: "Automations", href: "/dashboard/automations" },
-  { icon: Calendar, label: "Calendar" },
-  { icon: Settings, label: "Settings" },
+  { icon: Calendar, label: "Calendar", href: "/dashboard/calendar" },
+  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
 ];
 
 const activeProjects = [
@@ -69,27 +71,12 @@ export default function Sidebar() {
           <nav aria-label="Main navigation" className="flex flex-col gap-0.5">
             {navItems.map((item) => {
               const { icon: Icon, label, href, badge } = item;
-              const active = href
-                ? href === "/dashboard"
+              const active =
+                href === "/dashboard"
                   ? pathname === href
-                  : pathname === href || pathname.startsWith(`${href}/`)
-                : false;
-              const content = (
-                <>
-                  <Icon size={16} className="mr-2 shrink-0" aria-hidden={true} />
-                  <span className="flex-1 text-left">{label}</span>
-                  {badge && (
-                    <Badge
-                      variant="secondary"
-                      className="ml-auto h-4 px-1.5 text-[10px] leading-none"
-                    >
-                      {badge}
-                    </Badge>
-                  )}
-                </>
-              );
+                  : pathname === href || pathname.startsWith(`${href}/`);
 
-              return href ? (
+              return (
                 <Button
                   key={label}
                   variant="ghost"
@@ -105,17 +92,17 @@ export default function Sidebar() {
                   asChild
                 >
                   <Link href={href} onClick={closeSidebar}>
-                    {content}
+                    <Icon size={16} className="mr-2 shrink-0" aria-hidden={true} />
+                    <span className="flex-1 text-left">{label}</span>
+                    {badge && (
+                      <Badge
+                        variant="secondary"
+                        className="ml-auto h-4 px-1.5 text-[10px] leading-none"
+                      >
+                        {badge}
+                      </Badge>
+                    )}
                   </Link>
-                </Button>
-              ) : (
-                <Button
-                  key={label}
-                  type="button"
-                  variant="ghost"
-                  className="w-full justify-start h-8 px-2 text-sm font-normal"
-                >
-                  {content}
                 </Button>
               );
             })}
