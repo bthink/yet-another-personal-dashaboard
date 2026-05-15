@@ -31,13 +31,30 @@ export interface TodoSection {
   items: TodoItem[]
 }
 
+export type WriteAction =
+  | "add-to-todo"
+  | "create-note"
+  | "move-to-ideas"
+  | "watchlist"
+  | "keep"
+  | "delete"
+
+export interface ClassifyResult {
+  suggestedAction: WriteAction
+  confidence: number // 0-1
+  reasoning: string
+  destinationPath?: string // vault-relative path
+  todoText?: string // for add-to-todo action
+}
+
+// Legacy mock type — kept for reference
 export interface AiSuggestion {
   id: string
   inboxItemId: string
-  suggestedAction: "add-to-todo" | "create-note" | "move-to-ideas" | "watchlist" | "keep" | "delete"
-  confidence: number // 0-1
+  suggestedAction: WriteAction
+  confidence: number
   reasoning: string
-  destinationPath?: string // vault path
+  destinationPath?: string
 }
 
 export const mockInboxItems: InboxItem[] = [

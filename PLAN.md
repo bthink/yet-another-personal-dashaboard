@@ -93,30 +93,30 @@ Status: ukończona 2026-05-11
 | 1.10 Theming - light/dark, CSS variables | [x] |
 | 1.11 Responsywność ≤1024px (collapsible sidebar, right panel jako drawer) | [x] |
 
-### Faza 2 - Vault access [ ]
+### Faza 2 - Vault access [x]
 
-Status: nierozpoczęta - NASTĘPNA
-
-| Task | Status |
-|---|---|
-| 2.1 VAULT_PATH z .env.local, API route health check | [ ] |
-| 2.2 GET /api/vault/inbox - fs listing 97_Inbox/ | [ ] |
-| 2.3 GET /api/vault/todo - parser 00_System/TODO.md | [ ] |
-| 2.4 GET /api/vault/projects - lista 01_Projects/ | [ ] |
-| 2.5 Podmiana mocków na realne dane | [ ] |
-| 2.6 obsidian:// deep links | [ ] |
-
-### Faza 3 - Inbox routing (core value) [ ]
-
-Status: nierozpoczęta (po Fazie 2)
+Status: ukończona 2026-05-12
 
 | Task | Status |
 |---|---|
-| 3.1 POST /api/inbox/classify - Anthropic classify (type + suggested destination) | [ ] |
-| 3.2 Triage UI z AI suggestion + akcje (Add to TODO / Create note / Move to ideas / Watchlist / Keep / Delete) | [ ] |
-| 3.3 Preview diff przed zapisem | [ ] |
-| 3.4 POST /api/vault/write - atomic safe write z backupem | [ ] |
-| 3.5 Toast + Undo + write animation | [ ] |
+| 2.1 VAULT_PATH z .env.local, API route health check | [x] |
+| 2.2 GET /api/vault/inbox - fs listing 97_Inbox/ | [x] |
+| 2.3 GET /api/vault/todo - parser 00_System/TODO.md | [x] |
+| 2.4 GET /api/vault/projects - lista 01_Projects/ | [x] |
+| 2.5 Podmiana mocków na realne dane | [x] |
+| 2.6 obsidian:// deep links | [x] |
+
+### Faza 3 - Inbox routing (core value) [x]
+
+Status: ukończona 2026-05-12
+
+| Task | Status |
+|---|---|
+| 3.1 GET /api/inbox/classify - Anthropic classify (type + suggested destination + confidence) | [x] |
+| 3.2 Triage UI z AI suggestion + akcje (Add to TODO / Create note / Move to ideas / Watchlist / Keep / Delete) | [x] |
+| 3.3 Preview diff przed zapisem (inline confirmation step) | [x] |
+| 3.4 POST /api/vault/write - atomic safe write z backupem + POST undo | [x] |
+| 3.5 Toast + Undo (Sonner) | [x] |
 
 ### Faza 4+ (backlog)
 

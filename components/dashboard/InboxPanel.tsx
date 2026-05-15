@@ -1,16 +1,11 @@
 'use client'
 
 import { useState } from "react"
-import useSWR from "swr"
 import { FileText, Link2, CheckSquare, Lightbulb, File, ExternalLink } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
 import type { InboxItem, InboxItemType, InboxItemStatus } from "@/lib/mock-data"
 import { buildObsidianUrl } from "@/lib/obsidian"
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json())
-
-type FilterTab = "all" | InboxItemStatus
 
 function formatRelativeTime(isoString: string): string {
   const now = new Date()
@@ -110,6 +105,8 @@ function InboxItemRow({ item, selected, vaultName, onSelect }: InboxItemRowProps
   )
 }
 
+type FilterTab = "all" | InboxItemStatus
+
 const FILTER_TABS: { key: FilterTab; label: string }[] = [
   { key: "all", label: "All" },
   { key: "new", label: "New" },
@@ -117,33 +114,31 @@ const FILTER_TABS: { key: FilterTab; label: string }[] = [
   { key: "snoozed", label: "Snoozed" },
 ]
 
-export default function InboxPanel(): React.ReactElement {
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+interface InboxPanelProps {
+  items: InboxItem[]
+  isLoading: boolean
+  selectedId: string | null
+  vaultName: string | undefined
+  onSelect: (id: string) => void
+}
+
+export default function InboxPanel({
+  items,
+  isLoading,
+  selectedId,
+  vaultName,
+  onSelect,
+}: InboxPanelProps): React.ReactElement {
   const [activeFilter, setActiveFilter] = useState<FilterTab>("all")
-
-  const { data: inboxItems = [], isLoading } = useSWR<InboxItem[]>(
-    "/api/vault/inbox",
-    fetcher,
-    { refreshInterval: 30_000 },
-  )
-
-  const { data: healthData } = useSWR<{ ok: boolean; vaultName: string }>(
-    "/api/vault/health",
-    fetcher,
-  )
 
   const filteredItems =
     activeFilter === "all"
-      ? inboxItems
-      : inboxItems.filter((item) => item.status === activeFilter)
+      ? items
+      : items.filter((item) => item.status === activeFilter)
 
   function getTabCount(key: FilterTab): number {
-    if (key === "all") return inboxItems.length
-    return inboxItems.filter((item) => item.status === key).length
-  }
-
-  function handleSelect(id: string): void {
-    setSelectedId((prev) => (prev === id ? null : id))
+    if (key === "all") return items.length
+    return items.filter((item) => item.status === key).length
   }
 
   return (
@@ -153,7 +148,7 @@ export default function InboxPanel(): React.ReactElement {
         <div className="flex items-center gap-2 mb-2">
           <h2 className="text-sm font-semibold">Inbox</h2>
           <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-auto font-mono">
-            {isLoading ? "…" : inboxItems.length}
+            {isLoading ? "…" : items.length}
           </Badge>
         </div>
 
@@ -194,8 +189,8 @@ export default function InboxPanel(): React.ReactElement {
                 key={item.id}
                 item={item}
                 selected={selectedId === item.id}
-                vaultName={healthData?.vaultName}
-                onSelect={handleSelect}
+                vaultName={vaultName}
+                onSelect={onSelect}
               />
             ))
           )}
