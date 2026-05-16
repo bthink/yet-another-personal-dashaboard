@@ -1,8 +1,8 @@
 ---
 tags: [projekt, dashboard, ai, rag]
 created: 2026-04-24
-updated: 2026-05-11
-status: in-progress (Faza 1 ukończona)
+updated: 2026-05-16
+status: in-progress (Fazy 1-9 ukończone)
 ---
 
 # Personal Dashboard
@@ -92,22 +92,30 @@ Bf-vault/
 - [x] Light/dark theming (localStorage)
 - [x] Responsywność ≤1024px (sidebar Sheet, right panel Drawer)
 
-### Etap 2 - Vault access [ ] NASTĘPNY
-- [ ] Czytanie `.md` z vaultu
-- [ ] Lista plikow z `97_Inbox/`
-- [ ] Parser `00_System/TODO.md`
-- [ ] Otwieranie notatek i sciezek z poziomu UI
+### Etap 2 - Vault access [x] UKOŃCZONY (2026-05-12)
+- [x] Czytanie `.md` z vaultu
+- [x] Lista plikow z `97_Inbox/`
+- [x] Parser `00_System/TODO.md`
+- [x] Otwieranie notatek i sciezek z poziomu UI
 
-### Etap 3 - Inbox routing
-- [ ] Klasyfikacja itemow z inboxa
-- [ ] Akcje: Add to TODO, Create knowledge note, Move to ideas, Add to watchlist, Keep in inbox
-- [ ] Markdown preview before save
-- [ ] Bezpieczny zapis zmian do vaultu
+### Etap 3 - Inbox routing [x] UKOŃCZONY (2026-05-12)
+- [x] Klasyfikacja itemow z inboxa
+- [x] Akcje: Add to TODO, Create knowledge note, Move to ideas, Add to watchlist, Keep in inbox
+- [x] Markdown preview before save
+- [x] Bezpieczny zapis zmian do vaultu
 
-### Etap 4 - Search + ask vault
-- [ ] Lokalny search po vaultcie
-- [ ] Wyniki ze sciezkami, fragmentami i wikilinkami
-- [ ] Prosty tryb Ask with context
+### Etapy 4-9 [x] UKOŃCZONE (2026-05-16)
+- [x] Routing fix - wszystkie strony pod /dashboard
+- [x] Live data w sidebar/topbar (vault health, projekty, inbox count)
+- [x] Command palette nawigacja + real inbox data
+- [x] Search: fuse.js indeks, /api/vault/search, topbar dropdown
+- [x] Projects cockpit: lista, detail, AI resume
+- [x] Knowledge browser: 356 notatek, folder filter, search
+- [x] Vault hygiene: orphan notes, deadlinks, notatki bez indeksu
+- [x] Duplicate detector w ContextPanel (przed create-note)
+- [x] Stale task detector w TodoPanel (14d+ overdue)
+- [x] Settings: vault status, theme/accent/density, model selector
+- [x] Research pipeline + Automations + 3D graph (Faza 4 poprzednia)
 
 ### Etap 5 - Project cockpit
 - [ ] Widok aktywnych projektow z `01_Projects/`
