@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useSWR from "swr";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,12 +28,21 @@ interface NavItem {
   icon: ComponentType<{ size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
   label: string;
   href: string;
-  badge?: string;
 }
+
+type HealthResponse = { ok: boolean; vaultName: string; inboxCount: number } | { ok: false; error: string };
+
+type ProjectSummary = {
+  id: string;
+  name: string;
+  path: string;
+  fileCount: number;
+  lastModified: string;
+};
 
 const navItems: NavItem[] = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
-  { icon: Inbox, label: "Inbox", href: "/dashboard/inbox", badge: "12" },
+  { icon: Inbox, label: "Inbox", href: "/dashboard/inbox" },
   { icon: CheckSquare, label: "TODO", href: "/dashboard/todo" },
   { icon: BookOpen, label: "Knowledge", href: "/dashboard/knowledge" },
   { icon: FolderKanban, label: "Projects", href: "/dashboard/projects" },
@@ -43,15 +53,17 @@ const navItems: NavItem[] = [
   { icon: Settings, label: "Settings", href: "/dashboard/settings" },
 ];
 
-const activeProjects = [
-  "Website redesign",
-  "Q2 Planning",
-  "Research notes",
-] as const;
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function Sidebar() {
   const pathname = usePathname();
   const { closeSidebar } = useMobileNav();
+
+  const { data: health } = useSWR<HealthResponse>("/api/vault/health", fetcher);
+  const { data: projects } = useSWR<ProjectSummary[]>("/api/vault/projects", fetcher);
+
+  const inboxCount = health && "inboxCount" in health && health.ok ? health.inboxCount : 0;
+  const activeProjects = projects?.slice(0, 5) ?? [];
 
   return (
     <aside
@@ -70,11 +82,12 @@ export default function Sidebar() {
         <div className="px-2 py-2">
           <nav aria-label="Main navigation" className="flex flex-col gap-0.5">
             {navItems.map((item) => {
-              const { icon: Icon, label, href, badge } = item;
+              const { icon: Icon, label, href } = item;
               const active =
                 href === "/dashboard"
                   ? pathname === href
                   : pathname === href || pathname.startsWith(`${href}/`);
+              const isInbox = href === "/dashboard/inbox";
 
               return (
                 <Button
@@ -94,12 +107,12 @@ export default function Sidebar() {
                   <Link href={href} onClick={closeSidebar}>
                     <Icon size={16} className="mr-2 shrink-0" aria-hidden={true} />
                     <span className="flex-1 text-left">{label}</span>
-                    {badge && (
+                    {isInbox && inboxCount > 0 && (
                       <Badge
                         variant="secondary"
                         className="ml-auto h-4 px-1.5 text-[10px] leading-none"
                       >
-                        {badge}
+                        {inboxCount}
                       </Badge>
                     )}
                   </Link>
@@ -109,27 +122,30 @@ export default function Sidebar() {
           </nav>
 
           {/* Active Projects */}
-          <div className="mt-4 px-2">
-            <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground mb-1.5">
-              Active Projects
-            </p>
-            <ul className="flex flex-col gap-0.5">
-              {activeProjects.map((project) => (
-                <li key={project}>
-                  <button
-                    type="button"
-                    className="w-full text-left flex items-center gap-2 px-1 py-1 text-xs rounded-sm hover:bg-muted truncate transition-colors"
-                  >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-accent shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span className="truncate">{project}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {activeProjects.length > 0 && (
+            <div className="mt-4 px-2">
+              <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground mb-1.5">
+                Active Projects
+              </p>
+              <ul className="flex flex-col gap-0.5">
+                {activeProjects.map((project) => (
+                  <li key={project.id}>
+                    <Link
+                      href={`/dashboard/projects`}
+                      className="w-full text-left flex items-center gap-2 px-1 py-1 text-xs rounded-sm hover:bg-muted truncate transition-colors"
+                      onClick={closeSidebar}
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full bg-accent shrink-0"
+                        aria-hidden="true"
+                      />
+                      <span className="truncate">{project.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </ScrollArea>
 

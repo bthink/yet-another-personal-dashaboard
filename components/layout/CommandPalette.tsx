@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, type ComponentType } from "react";
+import { useRouter } from "next/navigation";
+import useSWR from "swr";
 import {
   Search,
   Inbox,
@@ -12,8 +14,15 @@ import {
   Settings,
   Plus,
   FilePlus,
+  Network,
+  Zap,
+  FileText,
 } from "lucide-react";
-import { mockInboxItems } from "@/lib/mock-data";
+
+interface InboxItem {
+  id: string;
+  title: string;
+}
 
 interface CommandItem {
   id: string;
@@ -21,25 +30,26 @@ interface CommandItem {
   group: "navigation" | "actions" | "recent";
   icon: ComponentType<{ className?: string }>;
   shortcut?: string;
+  href?: string;
+  action?: "capture" | "search";
 }
 
-const ALL_COMMANDS: CommandItem[] = [
-  { id: "nav-inbox", label: "Go to Inbox", group: "navigation", icon: Inbox, shortcut: "G I" },
-  { id: "nav-todo", label: "Go to TODO", group: "navigation", icon: CheckSquare, shortcut: "G T" },
-  { id: "nav-knowledge", label: "Go to Knowledge", group: "navigation", icon: BookOpen },
-  { id: "nav-projects", label: "Go to Projects", group: "navigation", icon: FolderKanban },
-  { id: "nav-research", label: "Go to Research", group: "navigation", icon: FlaskConical },
-  { id: "nav-calendar", label: "Go to Calendar", group: "navigation", icon: Calendar },
-  { id: "nav-settings", label: "Go to Settings", group: "navigation", icon: Settings, shortcut: "G S" },
-  { id: "action-capture", label: "Quick capture", group: "actions", icon: Plus, shortcut: "⌘K" },
-  { id: "action-new-note", label: "New note", group: "actions", icon: FilePlus },
-  { id: "action-search", label: "Search vault", group: "actions", icon: Search, shortcut: "⌘F" },
-  ...mockInboxItems.slice(0, 3).map((item) => ({
-    id: `recent-${item.id}`,
-    label: item.title,
-    group: "recent" as const,
-    icon: Search,
-  })),
+const NAV_COMMANDS: CommandItem[] = [
+  { id: "nav-inbox", label: "Go to Inbox", group: "navigation", icon: Inbox, shortcut: "G I", href: "/dashboard" },
+  { id: "nav-todo", label: "Go to TODO", group: "navigation", icon: CheckSquare, shortcut: "G T", href: "/dashboard" },
+  { id: "nav-knowledge", label: "Go to Knowledge", group: "navigation", icon: BookOpen, href: "/dashboard/knowledge" },
+  { id: "nav-projects", label: "Go to Projects", group: "navigation", icon: FolderKanban, href: "/dashboard/projects" },
+  { id: "nav-research", label: "Go to Research", group: "navigation", icon: FlaskConical, href: "/dashboard/research" },
+  { id: "nav-calendar", label: "Go to Calendar", group: "navigation", icon: Calendar, href: "/dashboard/calendar" },
+  { id: "nav-settings", label: "Go to Settings", group: "navigation", icon: Settings, shortcut: "G S", href: "/dashboard/settings" },
+  { id: "nav-graph", label: "Go to Graph", group: "navigation", icon: Network, href: "/dashboard/graph" },
+  { id: "nav-automations", label: "Go to Automations", group: "navigation", icon: Zap, href: "/dashboard/automations" },
+];
+
+const ACTION_COMMANDS: CommandItem[] = [
+  { id: "action-capture", label: "Quick capture", group: "actions", icon: Plus, shortcut: "⌘K", action: "capture" },
+  { id: "action-new-note", label: "New note", group: "actions", icon: FilePlus, href: "/dashboard/knowledge" },
+  { id: "action-search", label: "Search vault", group: "actions", icon: Search, shortcut: "⌘F", action: "search" },
 ];
 
 const GROUP_LABELS: Record<CommandItem["group"], string> = {
@@ -50,15 +60,33 @@ const GROUP_LABELS: Record<CommandItem["group"], string> = {
 
 const GROUP_ORDER: CommandItem["group"][] = ["navigation", "actions", "recent"];
 
+const fetcher = (url: string): Promise<InboxItem[]> =>
+  fetch(url).then((r) => r.json() as Promise<InboxItem[]>);
+
 interface Props {
   onClose: () => void;
 }
 
 export default function CommandPalette({ onClose }: Props) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+
+  const { data: inboxItems } = useSWR<InboxItem[]>("/api/vault/inbox", fetcher, {
+    revalidateOnFocus: false,
+  });
+
+  const recentCommands: CommandItem[] = (inboxItems ?? []).slice(0, 3).map((item) => ({
+    id: `recent-${item.id}`,
+    label: item.title,
+    group: "recent" as const,
+    icon: FileText,
+    href: "/dashboard",
+  }));
+
+  const ALL_COMMANDS: CommandItem[] = [...NAV_COMMANDS, ...ACTION_COMMANDS, ...recentCommands];
 
   const filtered = query.trim()
     ? ALL_COMMANDS.filter((cmd) =>
@@ -67,9 +95,26 @@ export default function CommandPalette({ onClose }: Props) {
     : ALL_COMMANDS;
 
   function handleQueryChange(value: string): void {
-    setQuery(value)
-    setHighlightedIndex(0)
+    setQuery(value);
+    setHighlightedIndex(0);
   }
+
+  const handleSelect = useCallback(
+    (cmd: CommandItem) => {
+      if (cmd.href) {
+        router.push(cmd.href);
+        onClose();
+        return;
+      }
+      if (cmd.action === "capture" || cmd.action === "search") {
+        // MVP: just close palette; search/capture is in topbar
+        onClose();
+        return;
+      }
+      onClose();
+    },
+    [router, onClose]
+  );
 
   // Focus input on mount
   useEffect(() => {
@@ -96,13 +141,12 @@ export default function CommandPalette({ onClose }: Props) {
         e.preventDefault();
         const item = filtered[highlightedIndex];
         if (item) {
-          console.log("Command activated:", item.id, item.label);
-          onClose();
+          handleSelect(item);
         }
         return;
       }
     },
-    [filtered, highlightedIndex, onClose]
+    [filtered, highlightedIndex, onClose, handleSelect]
   );
 
   // Scroll highlighted item into view
@@ -190,10 +234,7 @@ export default function CommandPalette({ onClose }: Props) {
                           isHighlighted ? "bg-accent/10 text-foreground" : "text-foreground hover:bg-muted/50",
                         ].join(" ")}
                         onMouseEnter={() => setHighlightedIndex(absoluteIndex)}
-                        onClick={() => {
-                          console.log("Command activated:", cmd.id, cmd.label);
-                          onClose();
-                        }}
+                        onClick={() => handleSelect(cmd)}
                       >
                         <Icon className="size-4 text-muted-foreground shrink-0" />
                         <span className="flex-1">{cmd.label}</span>

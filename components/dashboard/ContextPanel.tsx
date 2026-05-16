@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import type { ClassifyResult, InboxItem, WriteAction } from "@/lib/mock-data"
+import type { SearchResult } from "@/lib/search"
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
@@ -42,6 +43,16 @@ function confidenceColor(c: number): string {
   return "bg-muted-foreground/40"
 }
 
+/** Derives the MOC/index path from a destination like "03_Knowledge/IT/RAG" -> "03_Knowledge/IT/IT.md" */
+function deriveIndexPath(destinationPath: string | undefined, _noteTitle: string): string | null {
+  if (!destinationPath) return null
+  const parts = destinationPath.split("/")
+  // Expect at least: 03_Knowledge / <subfolder> / <filename>
+  if (parts.length < 3 || parts[0] !== "03_Knowledge") return null
+  const subfolder = parts[1]
+  return `03_Knowledge/${subfolder}/${subfolder}.md`
+}
+
 function diffDescription(
   action: WriteAction,
   result: ClassifyResult,
@@ -52,8 +63,11 @@ function diffDescription(
       return `"${item.title}" will be permanently deleted from 97_Inbox/.`
     case "move-to-ideas":
       return `File will be moved from 97_Inbox/ to 04_Ideas/.`
-    case "create-note":
-      return `Note will be created at ${result.destinationPath ?? "suggested path"}.md and removed from inbox.`
+    case "create-note": {
+      const base = `Note will be created at ${result.destinationPath ?? "suggested path"}.md and removed from inbox.`
+      const indexSuggestion = deriveIndexPath(result.destinationPath, item.title)
+      return indexSuggestion ? `${base}\n\n💡 Also consider adding [[${item.title}]] to ${indexSuggestion}` : base
+    }
     case "add-to-todo":
       return `Task will be appended to 00_System/TODO.md:\n- [ ] ${result.todoText ?? item.title}`
     case "watchlist":
@@ -80,6 +94,22 @@ export default function ContextPanel({
     fetcher,
     { revalidateOnFocus: false },
   )
+
+  const isDuplicateCheckEnabled =
+    selectedItem !== null &&
+    classifyResult?.suggestedAction === "create-note"
+
+  const { data: duplicateResults } = useSWR<SearchResult[]>(
+    isDuplicateCheckEnabled
+      ? `/api/vault/search?q=${encodeURIComponent(selectedItem!.title)}`
+      : null,
+    fetcher,
+    { revalidateOnFocus: false },
+  )
+
+  const similarNotes = (duplicateResults ?? [])
+    .filter((r) => r.folder === "03_Knowledge" && r.score < 0.4)
+    .slice(0, 3)
 
   async function handleConfirm(): Promise<void> {
     if (!pendingAction || !selectedItem || !classifyResult) return
@@ -200,6 +230,41 @@ export default function ContextPanel({
                 </Badge>
                 <span className="text-xs text-muted-foreground">suggested</span>
               </div>
+
+              {/* 8.1 Duplicate warning */}
+              {similarNotes.length > 0 && (
+                <div
+                  style={{
+                    background: "color-mix(in srgb, var(--amber) 10%, transparent)",
+                    border: "1px solid color-mix(in srgb, var(--amber) 30%, transparent)",
+                    borderRadius: "var(--radius)",
+                    padding: "8px 10px",
+                  }}
+                  role="alert"
+                >
+                  <div className="flex items-center gap-1.5 mb-1.5" style={{ color: "var(--amber)" }}>
+                    <span aria-hidden="true">⚠</span>
+                    <span className="text-xs font-medium">Similar notes found:</span>
+                  </div>
+                  <ul className="flex flex-col gap-0.5">
+                    {similarNotes.map((note) => (
+                      <li key={note.path}>
+                        <a
+                          href={`obsidian://open?vault=Bf-vault&file=${encodeURIComponent(note.path)}`}
+                          style={{
+                            color: "var(--accent)",
+                            fontSize: "11px",
+                            fontFamily: "var(--font-mono, monospace)",
+                          }}
+                          title={note.path}
+                        >
+                          {note.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* Confidence bar */}
               <div className="flex flex-col gap-1">

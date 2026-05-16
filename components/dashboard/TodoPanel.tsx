@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import useSWR from "swr"
-import { Check, Plus, Calendar } from "lucide-react"
+import { Check, Plus, Calendar, X } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
@@ -23,6 +23,12 @@ function isOverdue(dueDate: string): boolean {
   const due = new Date(dueDate)
   due.setHours(0, 0, 0, 0)
   return due <= today
+}
+
+function isStale(dueDate: string, done: boolean): boolean {
+  if (done) return false
+  const diff = Date.now() - new Date(dueDate).getTime()
+  return diff > 14 * 24 * 60 * 60 * 1000
 }
 
 function formatDueDate(dueDate: string): string {
@@ -47,12 +53,16 @@ function renderTitleWithWikilinks(title: string): React.ReactNode {
 interface TodoItemRowProps {
   item: TodoItem
   done: boolean
+  stale: boolean
   onToggle: (id: string) => void
 }
 
-function TodoItemRow({ item, done, onToggle }: TodoItemRowProps): React.ReactElement {
+function TodoItemRow({ item, done, stale, onToggle }: TodoItemRowProps): React.ReactElement {
   return (
-    <div className="px-3 py-1.5 flex items-start gap-2">
+    <div
+      className="px-3 py-1.5 flex items-start gap-2"
+      style={stale ? { background: "color-mix(in srgb, var(--amber) 6%, transparent)" } : undefined}
+    >
       {/* Circular checkbox */}
       <button
         type="button"
@@ -86,13 +96,31 @@ function TodoItemRow({ item, done, onToggle }: TodoItemRowProps): React.ReactEle
 
         {/* Due date */}
         {item.dueDate && (
-          <div
-            className={`flex items-center gap-1 mt-0.5 ${
-              isOverdue(item.dueDate) ? "text-destructive" : "text-muted-foreground"
-            }`}
-          >
-            <Calendar className="w-2.5 h-2.5" />
-            <span className="text-xs">{formatDueDate(item.dueDate)}</span>
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <div
+              className={stale ? "" : isOverdue(item.dueDate) ? "text-destructive" : "text-muted-foreground"}
+              style={stale ? { color: "var(--amber)" } : undefined}
+            >
+              <span className="flex items-center gap-1">
+                <Calendar className="w-2.5 h-2.5" />
+                <span className="text-xs">{formatDueDate(item.dueDate)}</span>
+              </span>
+            </div>
+            {stale && (
+              <span
+                style={{
+                  fontSize: "9px",
+                  color: "var(--amber)",
+                  border: "1px solid color-mix(in srgb, var(--amber) 40%, transparent)",
+                  borderRadius: "3px",
+                  padding: "0px 4px",
+                  fontFamily: "var(--font-mono, monospace)",
+                  lineHeight: "1.5",
+                }}
+              >
+                stale
+              </span>
+            )}
           </div>
         )}
 
@@ -125,6 +153,7 @@ export default function TodoPanel(): React.ReactElement {
   )
 
   const [doneTodos, setDoneTodos] = useState<Set<string>>(new Set<string>())
+  const [staleBannerDismissed, setStaleBannerDismissed] = useState(false)
 
   const totalItems = todoSections.reduce((sum, s) => sum + s.items.length, 0)
 
@@ -139,6 +168,17 @@ export default function TodoPanel(): React.ReactElement {
       return next
     })
   }
+
+  function getEffectiveDone(item: TodoItem): boolean {
+    return item.done !== doneTodos.has(item.id)
+  }
+
+  const totalStaleCount = todoSections.reduce((sum, section) =>
+    sum + section.items.filter((item) =>
+      item.dueDate != null && isStale(item.dueDate, getEffectiveDone(item))
+    ).length,
+    0,
+  )
 
   return (
     <div className="flex flex-col h-full">
@@ -156,34 +196,80 @@ export default function TodoPanel(): React.ReactElement {
         </Button>
       </div>
 
+      {/* Stale summary banner */}
+      {totalStaleCount > 0 && !staleBannerDismissed && (
+        <div
+          className="flex items-center justify-between shrink-0"
+          style={{
+            background: "color-mix(in srgb, var(--amber) 8%, transparent)",
+            borderBottom: "1px solid color-mix(in srgb, var(--amber) 25%, transparent)",
+            padding: "6px 12px",
+          }}
+        >
+          <span
+            style={{ color: "var(--amber)", fontSize: "11px" }}
+          >
+            ⚠ {totalStaleCount} stale task{totalStaleCount === 1 ? "" : "s"} — overdue by 14+ days
+          </span>
+          <button
+            type="button"
+            aria-label="Dismiss stale tasks banner"
+            onClick={() => setStaleBannerDismissed(true)}
+            style={{ color: "var(--amber)", lineHeight: 1 }}
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+          >
+            <X className="w-3 h-3" />
+          </button>
+        </div>
+      )}
+
       {/* Scrollable sections */}
       <ScrollArea className="flex-1">
-        {todoSections.map((section, sectionIndex) => (
-          <div key={section.id}>
-            {/* Section heading */}
-            <div className="sticky top-0 z-10 bg-background px-3 py-1.5 flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {section.title}
-              </span>
-              <span className="text-xs text-muted-foreground">{section.items.length}</span>
+        {todoSections.map((section, sectionIndex) => {
+          const sectionStaleCount = section.items.filter((item) =>
+            item.dueDate != null && isStale(item.dueDate, getEffectiveDone(item))
+          ).length
+
+          return (
+            <div key={section.id}>
+              {/* Section heading */}
+              <div className="sticky top-0 z-10 bg-background px-3 py-1.5 flex items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  {section.title}
+                </span>
+                <span className="text-xs text-muted-foreground">{section.items.length}</span>
+                {sectionStaleCount > 0 && (
+                  <span
+                    className="flex items-center gap-0.5"
+                    style={{ color: "var(--amber)", fontSize: "10px" }}
+                  >
+                    ⚠ {sectionStaleCount} stale
+                  </span>
+                )}
+              </div>
+
+              {/* Items */}
+              {section.items.map((item) => {
+                const effectiveDone = getEffectiveDone(item)
+                const stale = item.dueDate != null && isStale(item.dueDate, effectiveDone)
+                return (
+                  <TodoItemRow
+                    key={item.id}
+                    item={item}
+                    done={effectiveDone}
+                    stale={stale}
+                    onToggle={toggleDone}
+                  />
+                )
+              })}
+
+              {/* Separator between sections */}
+              {sectionIndex < todoSections.length - 1 && (
+                <Separator className="my-1" />
+              )}
             </div>
-
-            {/* Items */}
-            {section.items.map((item) => (
-              <TodoItemRow
-                key={item.id}
-                item={item}
-                done={item.done !== doneTodos.has(item.id)}
-                onToggle={toggleDone}
-              />
-            ))}
-
-            {/* Separator between sections */}
-            {sectionIndex < todoSections.length - 1 && (
-              <Separator className="my-1" />
-            )}
-          </div>
-        ))}
+          )
+        })}
       </ScrollArea>
     </div>
   )

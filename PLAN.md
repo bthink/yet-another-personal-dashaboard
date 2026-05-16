@@ -1,6 +1,6 @@
 # PersonalDashboard - Plan działania
 
-Ostatnia aktualizacja: 2026-05-11
+Ostatnia aktualizacja: 2026-05-16
 
 ## Produkt
 
@@ -118,11 +118,69 @@ Status: ukończona 2026-05-12
 | 3.4 POST /api/vault/write - atomic safe write z backupem + POST undo | [x] |
 | 3.5 Toast + Undo (Sonner) | [x] |
 
-### Faza 4+ (backlog)
+### Faza 4 - UI fixes i live data [ ]
+
+| Task | Status |
+|---|---|
+| 4.1 Sidebar Active Projects - czyta realne dane z `/api/vault/projects` zamiast hard-coded mock | [ ] |
+| 4.2 Sidebar Inbox badge - czyta realną liczbę z `/api/vault/health` | [ ] |
+| 4.3 Topbar sync status - health check z `/api/vault/health`, pokazuje błąd gdy vault niedostępny | [ ] |
+| 4.4 Topbar search bar - podpięcie do wyszukiwarki (Faza 5) | [ ] |
+| 4.5 Command Palette - akcja "capture" z AI routing (type detect + route suggest) | [ ] |
+| 4.6 Inbox actions end-to-end - verify "Add to TODO / Create note / Move to Ideas / Delete" wywołują `POST /api/vault/write` | [ ] |
+| 4.7 Toast Undo - verify podpięty do `POST /api/vault/write/undo` | [ ] |
+
+### Faza 5 - Search [ ]
+
+| Task | Status |
+|---|---|
+| 5.1 `lib/search.ts` - lokalny indeks tekstowy (fuse.js lub flexsearch) budowany z plików vaultu | [ ] |
+| 5.2 `GET /api/vault/search?q=` - endpoint przeszukujący indeks, zwraca `SearchResult[]` | [ ] |
+| 5.3 Topbar search bar - wyszukiwarka live z debounce, wyniki jako dropdown | [ ] |
+| 5.4 Topbar mode "Search" - pełnoekranowy widok wyników z podglądem notatki | [ ] |
+| 5.5 "Open in Obsidian" - każdy wynik i wikilink ma `obsidian://open?vault=...` | [ ] |
+
+### Faza 6 - Projects cockpit [ ]
+
+| Task | Status |
+|---|---|
+| 6.1 `GET /api/vault/projects` - rozszerzenie o parsing frontmatter + ostatnia sesja z `96_ClaudeMemory/` | [ ] |
+| 6.2 `/dashboard/projects` - lista projektów z statusem, last session, next step | [ ] |
+| 6.3 Project detail view - timeline, open questions, related TODO, powiązane notatki | [ ] |
+| 6.4 Project resume - na podstawie `96_ClaudeMemory/` + notatek AI generuje "gdzie skończyliśmy + next action" | [ ] |
+
+### Faza 7 - Knowledge browser [ ]
+
+| Task | Status |
+|---|---|
+| 7.1 `GET /api/vault/knowledge` - lista notatek z `03_Knowledge/` z metadanymi (tagi, wikilinki, rozmiar) | [ ] |
+| 7.2 `/dashboard/knowledge` - przeglądarka z filtrowaniem po folderze/tagu | [ ] |
+| 7.3 Graf wikilinków - podpięcie `GraphView` do realnych danych z `/api/vault/graph` | [ ] |
+| 7.4 Orphan notes - notatki bez backlinków (dane z `lib/graph.ts`) | [ ] |
+| 7.5 Deadlink checker - `[[wikilink]]` do nieistniejących plików (dane z `lib/graph.ts`) | [ ] |
+
+### Faza 8 - Vault hygiene [ ]
+
+| Task | Status |
+|---|---|
+| 8.1 Duplicate detector - AI porównuje nowy content z istniejącymi notatkami przed zapisem | [ ] |
+| 8.2 Index maintainer - przy routowaniu inbox item AI proponuje dopisanie wikilinku do indeksu tematu | [ ] |
+| 8.3 Stale task detector - TODO wisza bez ruchu > 14 dni, wyróżnione w TodoPanel | [ ] |
+| 8.4 Link health panel - podsumowanie: deadlinks, orphans, notatki bez indeksu | [ ] |
+
+### Faza 9 - Settings [ ]
+
+| Task | Status |
+|---|---|
+| 9.1 `/dashboard/settings` - VAULT_PATH przez UI (zapis do `.env.local` lub osobny config plik) | [ ] |
+| 9.2 Wybór modelu Anthropic (sonnet/haiku) i podgląd szacowanego kosztu | [ ] |
+| 9.3 Motyw + akcent + density (compact/cozy) z persystencją | [ ] |
+
+### Faza 4+ (backlog dalszy)
 
 Patrz: `docs/Potencjalne funkcje - kolejne iteracje.md`
 
-Główne pozycje: Search/RAG, Knowledge composer, Projects cockpit, Research queue, Übersicht widget, Tauri packaging, Google Calendar.
+Pozycje poza aktualnym scope: Tauri packaging, Google Calendar, Übersicht widget, Browser clipper, Raycast command, Menu bar app.
 
 ## Decyzje architektoniczne
 
